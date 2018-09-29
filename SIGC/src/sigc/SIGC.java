@@ -19,5 +19,4 @@ public class SIGC {
         // v2
         // TODO code application logic here
     }
-    
 }
