@@ -18,6 +18,7 @@ public class SIGC {
      */
     public static void main(String[] args) {
         
+        // modificado por Richard Nilton Moises Leon
         Principal oPrincipal = new Principal();
         oPrincipal.setVisible(true);
     }
