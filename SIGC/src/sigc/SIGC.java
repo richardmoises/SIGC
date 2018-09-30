@@ -5,6 +5,8 @@
  */
 package sigc;
 
+import Vistas.Principal;
+
 /**
  *
  * @author RICHARD
@@ -16,7 +18,7 @@ public class SIGC {
      */
     public static void main(String[] args) {
         
-        // v2- 2
-        // TODO code application logic here
+        Principal oPrincipal = new Principal();
+        oPrincipal.setVisible(true);
     }
 }
