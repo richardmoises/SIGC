@@ -37,7 +37,7 @@ public class AutenticarUsuarioPrincipal extends javax.swing.JInternalFrame {
         JLBIntento.setText("Ud. tiene " + cont + " intentos para ingresar al sistema,");
         new Centrar(this, 120);
     }
-
+  
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
