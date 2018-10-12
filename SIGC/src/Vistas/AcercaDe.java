@@ -1,4 +1,6 @@
-
+/*
+*Modificado por yuliza
+*/
 package Vistas;
 
 import util.Centrar;
