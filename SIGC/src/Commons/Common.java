@@ -1,7 +1,9 @@
-package Commons;
-/*
+
+package Commons; 
+ /*
+Modificado por Alexis
 modificado por ROKY BERROCAL
- */
+*/
 
 public class Common {
 
