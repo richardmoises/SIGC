@@ -1,6 +1,6 @@
 package Commons; 
  /*
-Modificado por Alex
+Modificado por Alexis
 */
 
 public class Common {
