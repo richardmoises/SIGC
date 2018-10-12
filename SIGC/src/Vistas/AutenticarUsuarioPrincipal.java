@@ -1,4 +1,3 @@
-
 package Vistas;
 
 import Services.UsuarioBL;
@@ -16,7 +15,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
 
-//Modificado po ARMIN ENRIQUE
+//Modificado po JOSE ENRIQUE
 public class AutenticarUsuarioPrincipal extends javax.swing.JInternalFrame {
 
     private URL path = getClass().getResource("/Img/loginFondo.jpg");
