@@ -1,11 +1,11 @@
 package DAO;
 
-
 import util.Configuracion;
 import util.LeerFichero;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+//modificado por Maly & Limache
 public class BaseDA {
 
     private Connection cn;
@@ -31,21 +31,21 @@ public class BaseDA {
         this.driver = configuracion.getDriver();
         this.url = configuracion.getUrl();
 
-        connectionString = this.url + this.host +":"+ this.port +"/"+ this.bd;
+        connectionString = this.url + this.host + ":" + this.port + "/" + this.bd;
         //driverConnection = "org.postgresql.Driver";
         //user = "unsch";
         //password = "unsch";
     }
 
-    public Connection conectar() throws Exception{
+    public Connection conectar() throws Exception {
         Class.forName(connectionString);
-        cn=DriverManager.getConnection(driver,usuario,password);
+        cn = DriverManager.getConnection(driver, usuario, password);
         return cn;
     }
 
-    public void cerrarConexion()throws Exception{
+    public void cerrarConexion() throws Exception {
         cn.close();
-        cn=null;
+        cn = null;
     }
 
     public String getPassword() {
