@@ -1,3 +1,6 @@
+
+/*Modificado por Breisci MC*/
+
 package DAO;
 
 import Beans.UsuarioBE;
@@ -31,13 +34,12 @@ public class UsuarioDA extends BaseDA {
         ResultSet rs = null;
         PreparedStatement pst = null;
 
-
         try {
             oUsuarioBE = new UsuarioBE();
             Class.forName(DriverConnection);
             cn = DriverManager.getConnection(cadenaConexion, user, password);
             cn.setAutoCommit(false);
-            String sql="";
+            String sql = "";
             if (oUsuarioBE1.getIndOpSp() == 1) {
 
                 sql = " SELECT idusuario,usuario,contrasenia,nrodocumento,nombre,appaterno,apmaterno,telefonofijo,telefonomovil,direccion,email,idtiposexo,estado,idrol FROM usuario WHERE idusuario=? and estado=true";
@@ -52,7 +54,7 @@ public class UsuarioDA extends BaseDA {
                 pst.setString(1, oUsuarioBE1.getUsuario());
                 rs = pst.executeQuery();
             }
-             if (oUsuarioBE1.getIndOpSp() == 3) {
+            if (oUsuarioBE1.getIndOpSp() == 3) {
 
                 sql = " SELECT idusuario,usuario,contrasenia,nrodocumento,nombre,appaterno,apmaterno,telefonofijo,telefonomovil,direccion,email,idtiposexo,estado,idrol FROM usuario WHERE idusuario=?";
                 pst = cn.prepareStatement(sql);
@@ -116,7 +118,7 @@ public class UsuarioDA extends BaseDA {
                 pst.setInt(1, oUsuarioBE1.getIdusuario());
                 rs = pst.executeQuery();
             }
-              if (oUsuarioBE1.getIndOpSp() == 3) {
+            if (oUsuarioBE1.getIndOpSp() == 3) {
 
                 sql = "SELECT idusuario,usuario,contrasenia,nrodocumento,nombre,appaterno,apmaterno,telefonofijo,telefonomovil,direccion,email,idtiposexo,estado,idrol FROM usuario order by idusuario asc ";
                 pst = cn.prepareStatement(sql);
@@ -161,7 +163,6 @@ public class UsuarioDA extends BaseDA {
         int resultado = 0;
         Connection cn = null;
         CallableStatement cs = null;
-
 
         try {
             Class.forName(DriverConnection);
@@ -250,7 +251,6 @@ public class UsuarioDA extends BaseDA {
         int resultado = 0;
         Connection cn = null;
         CallableStatement cs = null;
-
 
         try {
             Class.forName(DriverConnection);

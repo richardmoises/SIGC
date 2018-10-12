@@ -11,6 +11,11 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+/**
+ *
+ * @author CESDE 
+ * Modificado por Herverth
+ */
 public class RolDA extends BaseDA {
 
     String cadenaConexion;
@@ -30,7 +35,6 @@ public class RolDA extends BaseDA {
         Connection cn = null;
         ResultSet rs = null;
         PreparedStatement pst = null;
-
 
         try {
             oRolBE = new RolBE();
@@ -73,7 +77,6 @@ public class RolDA extends BaseDA {
         Connection cn = null;
         ResultSet rs = null;
         PreparedStatement pst = null;
-
 
         try {
             listaRolBE = new ArrayList<RolBE>();
@@ -121,7 +124,6 @@ public class RolDA extends BaseDA {
         Connection cn = null;
         CallableStatement cs = null;
 
-
         try {
             Class.forName(DriverConnection);
             cn = DriverManager.getConnection(cadenaConexion, user, password);
@@ -156,7 +158,6 @@ public class RolDA extends BaseDA {
         Connection cn = null;
         CallableStatement cs = null;
 
-
         try {
             Class.forName(DriverConnection);
             cn = DriverManager.getConnection(cadenaConexion, user, password);
@@ -188,7 +189,6 @@ public class RolDA extends BaseDA {
         int resultado = 0;
         Connection cn = null;
         CallableStatement cs = null;
-
 
         try {
             Class.forName(DriverConnection);

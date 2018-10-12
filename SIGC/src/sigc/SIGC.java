@@ -4,6 +4,7 @@ import Vistas.Principal;
 
 /**
  * @author RICHARD
+ * Modificado por Richard
  */
 public class SIGC {
     
