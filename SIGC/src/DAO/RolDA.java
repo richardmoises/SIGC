@@ -233,7 +233,7 @@ public class RolDA extends BaseDA {
             cn.setAutoCommit(true);
         } catch (Exception ex) {
             cn.rollback();
-            ex.printStackTrace();
+            ex.getMessage();
         } finally {
             cn.close();
             cn = null;

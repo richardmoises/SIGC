@@ -1,4 +1,3 @@
-
 package Vistas;
 
 import Services.UsuarioBL;
@@ -294,31 +293,38 @@ public class AutenticarUsuarioPrincipal extends javax.swing.JInternalFrame {
 
     private void JBIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngresarActionPerformed
 
-        princ.llenarUsuario(null);
+        //princ.llenarUsuario(null);
+        
+        UsuarioBE oUsuarioBE = new UsuarioBE();
+        oUsuarioBE.setNombre(JTFUsuaruio.getText());
+        princ.llenarUsuario(oUsuarioBE);
+        this.dispose();
+        
+        /*
         this.dispose();
 
-        /*
-         if (JTFUsuaruio.getText().equals("")) {
-         JOptionPane.showInternalMessageDialog(des, "Debe ingresar un usuario.");
-         JTFUsuaruio.requestFocus();
-         } else {
-         UsuarioBE oUsuarioBE = autenticarUsuario(JTFUsuaruio.getText(), JPFPassword.getPassword());
-         if (!oUsuarioBE.isInExist()) {
-         cont--;
-         if (cont == 0) {
-         System.exit(0);
-         } else {
-         JLBError.setText("Password incorrecto");
-         JLBIntento.setText("Ud. tiene " + cont + " intentos para ingresar al sistema,");
-         JPFPassword.setText("");
-         JPFPassword.requestFocus();
-         }
-         } else {
-         princ.llenarUsuario(oUsuarioBE);
-         this.dispose();
-         }
-         }
-         */
+        if (JTFUsuaruio.getText().equals("")) {
+            JOptionPane.showInternalMessageDialog(des, "Debe ingresar un usuario.");
+            JTFUsuaruio.requestFocus();
+        } else {
+            UsuarioBE oUsuarioBE = autenticarUsuario(JTFUsuaruio.getText(), JPFPassword.getPassword());
+            if (!oUsuarioBE.isInExist()) {
+                cont--;
+                if (cont == 0) {
+                    System.exit(0);
+                } else {
+                    JLBError.setText("Password incorrecto");
+                    JLBIntento.setText("Ud. tiene " + cont + " intentos para ingresar al sistema,");
+                    JPFPassword.setText("");
+                    JPFPassword.requestFocus();
+                }
+            } else {
+                princ.llenarUsuario(oUsuarioBE);
+                this.dispose();
+            }
+        }
+                */
+
     }//GEN-LAST:event_JBIngresarActionPerformed
 
     private void JPFPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JPFPasswordKeyPressed

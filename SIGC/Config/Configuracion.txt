@@ -1,0 +1,7 @@
+postgres
+123456
+localhost
+5432
+sigc_db
+org.postgresql.Driver
+jdbc:postgresql://
