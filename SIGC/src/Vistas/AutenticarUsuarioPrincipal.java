@@ -1,6 +1,5 @@
 package Vistas;
 
-
 import Services.UsuarioBL;
 import Beans.UsuarioBE;
 import util.Centrar;
@@ -16,6 +15,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JToolBar;
 
+//Modificado po ARMIN ENRIQUE
 public class AutenticarUsuarioPrincipal extends javax.swing.JInternalFrame {
 
     private URL path = getClass().getResource("/Img/loginFondo.jpg");
@@ -292,11 +292,17 @@ public class AutenticarUsuarioPrincipal extends javax.swing.JInternalFrame {
 }//GEN-LAST:event_JBSalirActionPerformed
 
     private void JBIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBIngresarActionPerformed
+
+        //princ.llenarUsuario(null);
         
-        princ.llenarUsuario(null);
+        UsuarioBE oUsuarioBE = new UsuarioBE();
+        oUsuarioBE.setNombre(JTFUsuaruio.getText());
+        princ.llenarUsuario(oUsuarioBE);
         this.dispose();
         
         /*
+        this.dispose();
+
         if (JTFUsuaruio.getText().equals("")) {
             JOptionPane.showInternalMessageDialog(des, "Debe ingresar un usuario.");
             JTFUsuaruio.requestFocus();
@@ -317,7 +323,8 @@ public class AutenticarUsuarioPrincipal extends javax.swing.JInternalFrame {
                 this.dispose();
             }
         }
-        */
+                */
+
     }//GEN-LAST:event_JBIngresarActionPerformed
 
     private void JPFPasswordKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JPFPasswordKeyPressed
