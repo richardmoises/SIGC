@@ -1,5 +1,8 @@
 package Beans;
+/*
+modificado por ruben y roca
 
+*/
 public class UsuarioBE {
 
     private int IndOpSp;

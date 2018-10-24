@@ -1,6 +1,9 @@
+
+/*Modificado por Breisci MC*/
 package DAO;
 
 import Beans.UsuarioBE;
+import Services.RolBL;
 import java.sql.CallableStatement;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -10,6 +13,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class UsuarioDA extends BaseDA {
 
@@ -25,19 +29,44 @@ public class UsuarioDA extends BaseDA {
         password = super.getPassword();
     }
 
+    public List<Integer> obtenerIdVistaByUsuario(UsuarioBE oUsuarioBE){
+        
+        List<Integer> listaIds = new ArrayList<>();
+        
+        try {
+            String cad = "select vista.idvista from "
+                    + "rol inner join usuario on usuario.idrol = rol.idrol "
+                    + "inner join rolvista on rol.idrol = rolvista.idrol "
+                    + "inner join vista on vista.idvista = rolvista.idvista "
+                    + "where usuario.usuario = '"+oUsuarioBE.getNombre()+"' and rolvista.estado = '1'";
+
+            RolBL oRolBL = new RolBL();
+            ResultSet rs = oRolBL.listarRS(cad);
+            System.out.println(cad);
+            while (rs.next()) {
+                int idvista = rs.getInt("idvista");
+                
+                listaIds.add(idvista);
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        
+        return listaIds;
+    }
+    
     public UsuarioBE listarUsuarioBE(UsuarioBE oUsuarioBE1) throws SQLException {
         UsuarioBE oUsuarioBE = null;
         Connection cn = null;
         ResultSet rs = null;
         PreparedStatement pst = null;
 
-
         try {
             oUsuarioBE = new UsuarioBE();
             Class.forName(DriverConnection);
             cn = DriverManager.getConnection(cadenaConexion, user, password);
             cn.setAutoCommit(false);
-            String sql="";
+            String sql = "";
             if (oUsuarioBE1.getIndOpSp() == 1) {
 
                 sql = " SELECT idusuario,usuario,contrasenia,nrodocumento,nombre,appaterno,apmaterno,telefonofijo,telefonomovil,direccion,email,idtiposexo,estado,idrol FROM usuario WHERE idusuario=? and estado=true";
@@ -52,7 +81,7 @@ public class UsuarioDA extends BaseDA {
                 pst.setString(1, oUsuarioBE1.getUsuario());
                 rs = pst.executeQuery();
             }
-             if (oUsuarioBE1.getIndOpSp() == 3) {
+            if (oUsuarioBE1.getIndOpSp() == 3) {
 
                 sql = " SELECT idusuario,usuario,contrasenia,nrodocumento,nombre,appaterno,apmaterno,telefonofijo,telefonomovil,direccion,email,idtiposexo,estado,idrol FROM usuario WHERE idusuario=?";
                 pst = cn.prepareStatement(sql);
@@ -116,7 +145,7 @@ public class UsuarioDA extends BaseDA {
                 pst.setInt(1, oUsuarioBE1.getIdusuario());
                 rs = pst.executeQuery();
             }
-              if (oUsuarioBE1.getIndOpSp() == 3) {
+            if (oUsuarioBE1.getIndOpSp() == 3) {
 
                 sql = "SELECT idusuario,usuario,contrasenia,nrodocumento,nombre,appaterno,apmaterno,telefonofijo,telefonomovil,direccion,email,idtiposexo,estado,idrol FROM usuario order by idusuario asc ";
                 pst = cn.prepareStatement(sql);
@@ -161,7 +190,6 @@ public class UsuarioDA extends BaseDA {
         int resultado = 0;
         Connection cn = null;
         CallableStatement cs = null;
-
 
         try {
             Class.forName(DriverConnection);
@@ -250,7 +278,6 @@ public class UsuarioDA extends BaseDA {
         int resultado = 0;
         Connection cn = null;
         CallableStatement cs = null;
-
 
         try {
             Class.forName(DriverConnection);

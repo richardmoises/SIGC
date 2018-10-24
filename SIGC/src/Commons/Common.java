@@ -1,4 +1,7 @@
 package Commons;
+/*
+modificado por ROKY BERROCAL
+ */
 
 public class Common {
 
@@ -33,7 +36,6 @@ public class Common {
     public static String c_pathConfiguracion = "Config\\configuracion.txt";
 
     //public static String c_pathConfiguracion = "Config/configuracion.txt";
-
     public static String msje_Validacion_Controles = "Los Datos que tienen * son de caracter obligatorio.";
     //Ultimo numero de certificado emitido en el anterior sistema
     public static int c_numUltimoCertificado = 0;

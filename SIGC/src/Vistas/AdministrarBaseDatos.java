@@ -1,4 +1,3 @@
-
 package Vistas;
 
 import util.FileUtils;
@@ -8,10 +7,10 @@ import javax.swing.JDesktopPane;
 import javax.swing.JMenuBar;
 import javax.swing.JToolBar;
 
-
-
 import java.util.Iterator;
 import java.util.List;
+
+//Modificado por Isaac
 
 public class AdministrarBaseDatos extends javax.swing.JInternalFrame {
 
@@ -20,11 +19,11 @@ public class AdministrarBaseDatos extends javax.swing.JInternalFrame {
     private JMenuBar menu;
 
     public AdministrarBaseDatos(JDesktopPane JDPContenedor, JToolBar JTBBarraHerramientas, JMenuBar JMBMenu) {
-        this.des=JDPContenedor;
-        this.tool=JTBBarraHerramientas;
-        this.menu=JMBMenu;      
+        this.des = JDPContenedor;
+        this.tool = JTBBarraHerramientas;
+        this.menu = JMBMenu;
         initComponents();
-        new Centrar(this,80);
+        new Centrar(this, 80);
     }
 
     @SuppressWarnings("unchecked")
@@ -202,7 +201,7 @@ public class AdministrarBaseDatos extends javax.swing.JInternalFrame {
 
     private void JBAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBAceptarActionPerformed
 
-        Configuracion oConfiguracion=new Configuracion();
+        Configuracion oConfiguracion = new Configuracion();
 
         oConfiguracion.setUsuario(JTFUsuario.getText());
 
@@ -218,7 +217,7 @@ public class AdministrarBaseDatos extends javax.swing.JInternalFrame {
 
         oConfiguracion.setUrl(JTFUrl.getText());
 
-        FileUtils oFileUtils=new FileUtils();
+        FileUtils oFileUtils = new FileUtils();
 
         oFileUtils.escribirArchivoConfiguracion(oConfiguracion, Commons.Common.c_pathConfiguracion);
 
@@ -253,10 +252,10 @@ public class AdministrarBaseDatos extends javax.swing.JInternalFrame {
     }
 
     private void leerArchivoConfiguracion() {
-        
-        FileUtils oFileUtils=new FileUtils();
 
-        Configuracion oConfiguracion=oFileUtils.leerArchivo(Commons.Common.c_pathConfiguracion);
+        FileUtils oFileUtils = new FileUtils();
+
+        Configuracion oConfiguracion = oFileUtils.leerArchivo(Commons.Common.c_pathConfiguracion);
 
         JTFUsuario.setText(oConfiguracion.getUsuario());
 
@@ -273,5 +272,5 @@ public class AdministrarBaseDatos extends javax.swing.JInternalFrame {
         JTFUrl.setText(oConfiguracion.getUrl());
 
     }
-    
+
 }
