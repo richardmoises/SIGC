@@ -137,5 +137,22 @@ public class UsuarioBL {
         return modelo;
     }
 
+    public UsuarioBE findUsuarioByUserAndPass(String usuario, String contrasenia) {
+        
+        // validar el nombre de usuario y password
+        // de tal manera que no sean vacios y no sean
+        // iguales entre si
+        
+        
+        
+        UsuarioDA oUsuarioDA = new UsuarioDA();
+        UsuarioBE oUsuarioBE = new UsuarioBE();
+        
+        oUsuarioBE = oUsuarioDA.findUsuarioByUserAndPass(
+                usuario,contrasenia);
+        
+        return oUsuarioBE;
+    }
+
 
 }
