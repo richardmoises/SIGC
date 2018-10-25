@@ -29,32 +29,32 @@ public class UsuarioDA extends BaseDA {
         password = super.getPassword();
     }
 
-    public List<Integer> obtenerIdVistaByUsuario(UsuarioBE oUsuarioBE){
-        
+    public List<Integer> obtenerIdVistaByUsuario(UsuarioBE oUsuarioBE) {
+
         List<Integer> listaIds = new ArrayList<>();
-        
+
         try {
             String cad = "select vista.idvista from "
                     + "rol inner join usuario on usuario.idrol = rol.idrol "
                     + "inner join rolvista on rol.idrol = rolvista.idrol "
                     + "inner join vista on vista.idvista = rolvista.idvista "
-                    + "where usuario.usuario = '"+oUsuarioBE.getNombre()+"' and rolvista.estado = '1'";
+                    + "where usuario.usuario = '" + oUsuarioBE.getNombre() + "' and rolvista.estado = '1'";
 
             RolBL oRolBL = new RolBL();
             ResultSet rs = oRolBL.listarRS(cad);
             System.out.println(cad);
             while (rs.next()) {
                 int idvista = rs.getInt("idvista");
-                
+
                 listaIds.add(idvista);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        
+
         return listaIds;
     }
-    
+
     public UsuarioBE listarUsuarioBE(UsuarioBE oUsuarioBE1) throws SQLException {
         UsuarioBE oUsuarioBE = null;
         Connection cn = null;
@@ -341,18 +341,59 @@ public class UsuarioDA extends BaseDA {
         return rs;
     }
 
-    public UsuarioBE findUsuarioByUserAndPass(String usuario, 
+    public UsuarioBE findUsuarioByUserAndPass(String usuario,
             String contrasenia) {
-        
+
         // buscar utilizando los query necesarios
         // utilizando el usuario y contraseña luego
         // llenar todos los datos de la persona 
         // en el bean oUsuarioBE 
-        
         UsuarioBE oUsuarioBE = new UsuarioBE();
-        
-        
-        
+        try {
+            String cad = "select * from usuario where usuario.usuario = " + usuario + " and usuario.contrasenia=('%" + contrasenia + "%');";
+
+            RolBL oRolBL = new RolBL();
+            ResultSet rs = oRolBL.listarRS(cad);
+            System.out.println(cad);
+            while (rs.next()) {
+                int idusuario = rs.getInt("idusuario");
+                String nombre = rs.getString("nombre");
+                String apeMaterno = rs.getString("appaterno");
+                String apePaterno = rs.getString("apmaterno");
+
+                oUsuarioBE.setIdusuario(idusuario);
+                oUsuarioBE.setNombre(nombre);
+                oUsuarioBE.setAppaterno(apePaterno);
+                oUsuarioBE.setApmaterno(apeMaterno);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
         return oUsuarioBE;
     }
+
+
+
+       /* 
+        ResultSet resultados = oUsuarioBE.ejecutarQuery(
+                "select * from usuario where usuario.usuario = "+usuario+" and usuario.contrasenia=('%" + contrasenia + "%');");
+
+        try {
+            while (resultados.next()) {
+                int id = resultados.getInt("idusuario");
+                String nombre = resultados.getString("nombre");
+                String apeMaterno = resultados.getString("appaterno");
+                String apePaterno = resultados.getString("apmaterno");
+
+                oUsuarioBE.setIdusuario(id);
+                oUsuarioBE.setNombre(nombre);
+                oUsuarioBE.setAppaterno(apePaterno);
+                oUsuarioBE.setApmaterno(apeMaterno);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return oUsuarioBE;*/
+    
 }
