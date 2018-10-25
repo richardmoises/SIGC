@@ -38,8 +38,8 @@ public class UsuarioDA extends BaseDA {
                     + "rol inner join usuario on usuario.idrol = rol.idrol "
                     + "inner join rolvista on rol.idrol = rolvista.idrol "
                     + "inner join vista on vista.idvista = rolvista.idvista "
-                    + "where usuario.usuario = '" + oUsuarioBE.getNombre() + "' and rolvista.estado = '1'";
-
+                    + "where usuario.usuario = '" + oUsuarioBE.getUsuario() + "' and rolvista.estado = '1'";
+            
             RolBL oRolBL = new RolBL();
             ResultSet rs = oRolBL.listarRS(cad);
             System.out.println(cad);
@@ -350,7 +350,8 @@ public class UsuarioDA extends BaseDA {
         // en el bean oUsuarioBE 
         UsuarioBE oUsuarioBE = new UsuarioBE();
         try {
-            String cad = "select * from usuario where usuario.usuario = " + usuario + " and usuario.contrasenia=('%" + contrasenia + "%');";
+            String cad = "select * from usuario where usuario.usuario = '" 
+                    + usuario + "' and usuario.contrasenia=('" + contrasenia + "');";
 
             RolBL oRolBL = new RolBL();
             ResultSet rs = oRolBL.listarRS(cad);
