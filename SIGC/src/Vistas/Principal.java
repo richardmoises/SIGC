@@ -376,6 +376,7 @@ public class Principal extends javax.swing.JFrame {
 
     private void validarRolUsuario(UsuarioBE oUsuarioBE) {
 
+        // actualizando los menus segun el permiso que tenga
         UsuarioBL oUsuarioBL = new UsuarioBL();
         List<Integer> listaIds = 
                 oUsuarioBL.obtenerIdVistaByUsuario(oUsuarioBE);
@@ -383,6 +384,19 @@ public class Principal extends javax.swing.JFrame {
         for(Integer id : listaIds){
             mapJMI.get(id).setEnabled(true);
         }
+        
+        // mostrando los datos de la persona que se esta
+        // logueando o entrando al sistema
+        UsuarioBE oUsuarioBE2 = new UsuarioBE();
+        oUsuarioBE2 = oUsuarioBL.findUsuarioByUserAndPass(oUsuarioBE.getUsuario()
+                ,oUsuarioBE.getContrasenia());
+        
+        if(oUsuarioBE2 != null){
+            JLBUsuario.setText(oUsuarioBE2.getNombre()
+                +" "+oUsuarioBE2.getAppaterno()
+                +" "+oUsuarioBE2.getApmaterno());
+        }
+        
         
     }
 }

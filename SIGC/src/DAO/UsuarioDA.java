@@ -340,4 +340,19 @@ public class UsuarioDA extends BaseDA {
         }
         return rs;
     }
+
+    public UsuarioBE findUsuarioByUserAndPass(String usuario, 
+            String contrasenia) {
+        
+        // buscar utilizando los query necesarios
+        // utilizando el usuario y contraseña luego
+        // llenar todos los datos de la persona 
+        // en el bean oUsuarioBE 
+        
+        UsuarioBE oUsuarioBE = new UsuarioBE();
+        
+        
+        
+        return oUsuarioBE;
+    }
 }
