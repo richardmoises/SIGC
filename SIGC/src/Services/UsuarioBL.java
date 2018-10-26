@@ -154,5 +154,31 @@ public class UsuarioBL {
         return oUsuarioBE;
     }
 
+    
+    public List<UsuarioBE> listarPersonas(){
+        return null;
+    }
+    
+    public UsuarioBE findUsuarioById(){
+        return null;
+    }
+    
+    public UsuarioBE updateUser(UsuarioBE oUsuarioBE){
+        
+        // hacer una verficacion de los datos
+        // dd/mm/aaaa
+        // 
+        
+        return null;
+    }
+    
+    public UsuarioBE addUser(UsuarioBE oUsuarioBE){
+        
+        // hacer una verficacion de los datos
+        // dd/mm/aaaa
+        // 
+        
+        return null;
+    }
 
 }

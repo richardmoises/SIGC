@@ -373,28 +373,42 @@ public class UsuarioDA extends BaseDA {
         return oUsuarioBE;
     }
 
-
-
-       /* 
-        ResultSet resultados = oUsuarioBE.ejecutarQuery(
-                "select * from usuario where usuario.usuario = "+usuario+" and usuario.contrasenia=('%" + contrasenia + "%');");
-
-        try {
-            while (resultados.next()) {
-                int id = resultados.getInt("idusuario");
-                String nombre = resultados.getString("nombre");
-                String apeMaterno = resultados.getString("appaterno");
-                String apePaterno = resultados.getString("apmaterno");
-
-                oUsuarioBE.setIdusuario(id);
-                oUsuarioBE.setNombre(nombre);
-                oUsuarioBE.setAppaterno(apePaterno);
-                oUsuarioBE.setApmaterno(apeMaterno);
-            }
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
-        return oUsuarioBE;*/
+    public List<UsuarioBE> listarPersonas(){
+        return null;
+    }
     
+    public UsuarioBE findUsuarioById(){
+        return null;
+    }
+    
+    public UsuarioBE updateUser(UsuarioBE oUsuarioBE){
+        
+        // actualizando los datos de la persona
+        UsuarioBE oUsuarioBEresp = new UsuarioBE();
+        
+        try{
+            
+            oUsuarioBEresp.setIndOpSp(1);
+        }catch(Exception e){
+            oUsuarioBEresp.setIndOpSp(2);
+        }
+        
+        return oUsuarioBEresp;
+    }
+    
+    public UsuarioBE addUser(UsuarioBE oUsuarioBE){
+        
+        // realizando el registro de una nuevo usuario
+        UsuarioBE oUsuarioBEresp = new UsuarioBE();
+        
+        try{
+            
+            oUsuarioBEresp.setIndOpSp(1);
+        }catch(Exception e){
+            oUsuarioBEresp.setIndOpSp(2);
+        }
+        
+        return oUsuarioBEresp;
+    }
+
 }
