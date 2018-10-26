@@ -374,14 +374,22 @@ public class UsuarioDA extends BaseDA {
     }
 
     public List<UsuarioBE> listarPersonas(){
+        
+        // Arce y Zarate
+        
         return null;
     }
     
-    public UsuarioBE findUsuarioById(){
+    public UsuarioBE findUsuarioById(int id){
+        
+        // limache y Narciso
+        
         return null;
     }
     
     public UsuarioBE updateUser(UsuarioBE oUsuarioBE){
+        
+        // berrocal y Casas
         
         // actualizando los datos de la persona
         UsuarioBE oUsuarioBEresp = new UsuarioBE();
@@ -397,6 +405,8 @@ public class UsuarioDA extends BaseDA {
     }
     
     public UsuarioBE addUser(UsuarioBE oUsuarioBE){
+        
+        // Mora y Huaycha
         
         // realizando el registro de una nuevo usuario
         UsuarioBE oUsuarioBEresp = new UsuarioBE();
