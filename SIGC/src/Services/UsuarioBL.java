@@ -156,14 +156,20 @@ public class UsuarioBL {
 
     
     public List<UsuarioBE> listarPersonas(){
+        // Medina Jayo y Roca
+        
         return null;
     }
     
-    public UsuarioBE findUsuarioById(){
+    public UsuarioBE findUsuarioById(int id){
+        // Quispe
+        
         return null;
     }
     
     public UsuarioBE updateUser(UsuarioBE oUsuarioBE){
+        
+        // Curi y Machaca
         
         // hacer una verficacion de los datos
         // dd/mm/aaaa
@@ -173,6 +179,8 @@ public class UsuarioBL {
     }
     
     public UsuarioBE addUser(UsuarioBE oUsuarioBE){
+        
+        // Curi y Machaca
         
         // hacer una verficacion de los datos
         // dd/mm/aaaa
