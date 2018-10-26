@@ -137,5 +137,48 @@ public class UsuarioBL {
         return modelo;
     }
 
+    public UsuarioBE findUsuarioByUserAndPass(String usuario, String contrasenia) {
+        
+        // validar el nombre de usuario y password
+        // de tal manera que no sean vacios y no sean
+        // iguales entre si
+        
+        
+        
+        UsuarioDA oUsuarioDA = new UsuarioDA();
+        UsuarioBE oUsuarioBE = new UsuarioBE();
+        
+        oUsuarioBE = oUsuarioDA.findUsuarioByUserAndPass(
+                usuario,contrasenia);
+        
+        return oUsuarioBE;
+    }
+
+    
+    public List<UsuarioBE> listarPersonas(){
+        return null;
+    }
+    
+    public UsuarioBE findUsuarioById(){
+        return null;
+    }
+    
+    public UsuarioBE updateUser(UsuarioBE oUsuarioBE){
+        
+        // hacer una verficacion de los datos
+        // dd/mm/aaaa
+        // 
+        
+        return null;
+    }
+    
+    public UsuarioBE addUser(UsuarioBE oUsuarioBE){
+        
+        // hacer una verficacion de los datos
+        // dd/mm/aaaa
+        // 
+        
+        return null;
+    }
 
 }

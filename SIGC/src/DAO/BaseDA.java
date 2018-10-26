@@ -9,6 +9,8 @@ import java.sql.Statement;
 
 //modificado por Maly & Limache
 public class BaseDA {
+    
+    //modifido por limache & maly
 
     private Connection cn;
     private String connectionString;

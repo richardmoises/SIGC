@@ -296,7 +296,9 @@ public class AutenticarUsuarioPrincipal extends javax.swing.JInternalFrame {
         //princ.llenarUsuario(null);
         
         UsuarioBE oUsuarioBE = new UsuarioBE();
-        oUsuarioBE.setNombre(JTFUsuaruio.getText());
+        oUsuarioBE.setUsuario(JTFUsuaruio.getText());
+        oUsuarioBE.setContrasenia(JPFPassword.getText());
+        
         princ.llenarUsuario(oUsuarioBE);
         this.dispose();
         
