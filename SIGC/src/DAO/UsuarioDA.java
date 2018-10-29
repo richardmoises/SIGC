@@ -431,6 +431,7 @@ public class UsuarioDA extends BaseDA {
                 + ", '" + oUsuarioBEresp.getEstado_civil() + "'"
                 + ", '" + oUsuarioBEresp.getCuenta_facebook() + "');");
 
+        
         oUsuarioBE = findUsuarioById(resultados);
 
         try {
