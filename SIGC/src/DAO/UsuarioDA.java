@@ -381,11 +381,12 @@ public class UsuarioDA extends BaseDA {
 
     public UsuarioBE findUsuarioById(int id) {
         // limache y Narciso
-
+        // Buscando a usuario por id
         int contador = 0;
 
         UsuarioBE oUsuarioBE = new UsuarioBE();
         try {
+           
             String cad = "select * from usuario where usuario.idusuario = (" + id + ");";
 
             RolBL oRolBL = new RolBL();
@@ -431,23 +432,23 @@ public class UsuarioDA extends BaseDA {
                 oUsuarioBE.setFecha_nacimiento(fecha_nacimiento);
                 oUsuarioBE.setEstado_civil(estado_civil);
                 oUsuarioBE.setCuenta_facebook(cuenta_facebook);
-
+                
+                //al ingrsar el contador suma en uno 
+                contador++;
             }
+            //no encontrando el usuario con su id
+            //coso contrario el contador queda en cero y retorna nulo
             if (contador == 0) {
                 oUsuarioBE = null;
-            }else{
-                contador++;
-            
-           // oUsuarioBE = true;
-        }
-            
+            }
+
         } catch (Exception e) {
+            //sea el caso que haiga un error retornara nulo
             System.out.println(e.getMessage());
             oUsuarioBE = null;
         }
         return oUsuarioBE;
 
-        
     }
 
     public UsuarioBE updateUser(UsuarioBE oUsuarioBE) {
