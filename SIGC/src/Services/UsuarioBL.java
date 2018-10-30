@@ -152,7 +152,7 @@ public class UsuarioBL {
     }
 
     public List<UsuarioBE> listarPersonas() {
-        //Medina
+        //MODIFICADO POR Medina
         //roca
 
         UsuarioDA oUsuarioDA = new UsuarioDA();
