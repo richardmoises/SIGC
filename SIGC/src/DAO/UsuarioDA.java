@@ -210,7 +210,7 @@ public class UsuarioDA extends BaseDA {
                 cs.setString(9, oUsuarioBE.getDireccion());
                 cs.setString(10, oUsuarioBE.getEmail());
                 cs.setInt(11, oUsuarioBE.getIdtiposexo());
-                cs.setBoolean(12, oUsuarioBE.isEstado());
+                cs.setBoolean(12, oUsuarioBE.getEstado());
                 cs.setInt(13, oUsuarioBE.getIdrol());
                 cs.registerOutParameter(14, java.sql.Types.INTEGER);
                 cs.execute();
@@ -254,7 +254,7 @@ public class UsuarioDA extends BaseDA {
             cs.setString(9, oUsuarioBE.getDireccion());
             cs.setString(10, oUsuarioBE.getEmail());
             cs.setInt(11, oUsuarioBE.getIdtiposexo());
-            cs.setBoolean(12, oUsuarioBE.isEstado());
+            cs.setBoolean(12, oUsuarioBE.getEstado());
             cs.setInt(13, oUsuarioBE.getIdrol());
             cs.registerOutParameter(14, java.sql.Types.INTEGER);
             cs.execute();
@@ -298,7 +298,7 @@ public class UsuarioDA extends BaseDA {
             cs.setString(10, oUsuarioBE.getDireccion());
             cs.setString(11, oUsuarioBE.getEmail());
             cs.setInt(12, oUsuarioBE.getIdtiposexo());
-            cs.setBoolean(13, oUsuarioBE.isEstado());
+            cs.setBoolean(13, oUsuarioBE.getEstado());
             cs.setInt(14, oUsuarioBE.getIdrol());
             cs.registerOutParameter(15, java.sql.Types.INTEGER);
             cs.executeUpdate();
@@ -361,11 +361,15 @@ public class UsuarioDA extends BaseDA {
                 String nombre = rs.getString("nombre");
                 String apeMaterno = rs.getString("appaterno");
                 String apePaterno = rs.getString("apmaterno");
+                String usuariodb = rs.getString("usuario");
+                String contraseniadb = rs.getString("contrasenia");
 
                 oUsuarioBE.setIdusuario(idusuario);
                 oUsuarioBE.setNombre(nombre);
                 oUsuarioBE.setAppaterno(apePaterno);
                 oUsuarioBE.setApmaterno(apeMaterno);
+                oUsuarioBE.setUsuario(usuariodb);
+                oUsuarioBE.setContrasenia(contraseniadb);
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -405,7 +409,8 @@ public class UsuarioDA extends BaseDA {
                 boolean estado = resultados.getBoolean("estado");
                 boolean inExist = resultados.getBoolean("inExist");
                 int idrol = resultados.getInt("idrol");
-                String fecha_nacimiento = resultados.getString("fecha_nacimineto");
+                //Error al digitar la columna fecha_nacimiento
+                String fecha_nacimiento = resultados.getString("fecha_nacimiento");
                 String estado_civil = resultados.getString("estado_civil");
                 String cuenta_facebook = resultados.getString("cuenta_facebook");
 
@@ -514,26 +519,30 @@ public class UsuarioDA extends BaseDA {
         // Berrocal y Casas
         // actualizando los datos de la persona
         //UsuarioBE oUsuarioBEresp = new UsuarioBE();
+        //Retorna 0 cuando no ha realizado la actualizacion.
+        //Retorna 1 cuando si ha realizado la actualizacion.
         UtilDAO oUtilDAO = new UtilDAO();
         try {
-            int cad = oUtilDAO.ejecutarUpdate("update usuario "
-                    + " set usuario = '" + oUsuarioBE.getUsuario() + "' "
-                    + " ,contrasenia = '" + oUsuarioBE.getContrasenia() + "' "
-                    + " ,nrodocumento = '" + oUsuarioBE.getNrodocumento() + "' "
+            String cadquery = ("update usuario "
+                    //                    + " set usuario = '" + oUsuarioBE.getUsuario() + "' "
+                    //                    + " ,contrasenia = '" + oUsuarioBE.getContrasenia() + "' "
+                    + " set nrodocumento = '" + oUsuarioBE.getNrodocumento() + "' "
                     + " ,nombre = '" + oUsuarioBE.getNombre() + "' "
                     + " ,appaterno = '" + oUsuarioBE.getAppaterno() + "' "
                     + " ,apmaterno = '" + oUsuarioBE.getApmaterno() + "' "
-                    + " ,telefonofijo = '" + oUsuarioBE.getTelefonofijo() + "' "
+                    //                    + " ,telefonofijo = '" + oUsuarioBE.getTelefonofijo() + "' "
                     + " ,telefonomovil = '" + oUsuarioBE.getTelefonomovil() + "' "
                     + " ,direccion = '" + oUsuarioBE.getDireccion() + "' "
                     + " ,email = '" + oUsuarioBE.getEmail() + "' "
                     + " ,idtiposexo = '" + oUsuarioBE.getIdtiposexo() + "' "
-                    + " ,estado = '" + oUsuarioBE.isEstado() + "' "
-                    + " ,inExist = '" + oUsuarioBE.isInExist() + "' "
+                    + " ,estado = '" + oUsuarioBE.getEstado() + "' "
+                    + " ,inexist = '" + oUsuarioBE.isInExist() + "' "
                     + " ,fecha_nacimiento = '" + oUsuarioBE.getFecha_nacimiento() + "' "
-                    + " ,estadi_civil = '" + oUsuarioBE.getEstado_civil() + "' "
+//                    + " ,estado_civil = '" + oUsuarioBE.getEstado_civil() + "' "
                     + " ,cuenta_facebook = '" + oUsuarioBE.getCuenta_facebook() + "' "
                     + " where idusuario= " + oUsuarioBE.getIdusuario() + ";");
+
+            int cad = oUtilDAO.ejecutarUpdate(cadquery);
 
             System.out.println("resultado" + cad);
 
@@ -558,11 +567,38 @@ public class UsuarioDA extends BaseDA {
         // Mora y Huaycha
         // realizando el registro de una nuevo usuario
         UsuarioBE oUsuarioBEresp = new UsuarioBE();
+        UtilDAO utilDao = new UtilDAO();
+
+        int resultados = utilDao.ejecutarInsert("insert into "
+                + " persona(usuario,contrasenia,nrodocumento,nombre,appaterno,apmaterno,"
+                + "telefonofijo,telefonomovil,direccion,email,idtiposexo,estado,inExist,idrol,fecha_nacimiento,"
+                + "estado_civil,cuenta_facebook ) values ("
+
+                + " '" + oUsuarioBEresp.getUsuario() + "'"
+                + ", '" + oUsuarioBEresp.getContrasenia() + "'"
+                + ", '" + oUsuarioBEresp.getNrodocumento() + "'"
+                + ", '" + oUsuarioBEresp.getNombre() + "'"
+                + ", '" + oUsuarioBEresp.getAppaterno() + "'"
+                + ", '" + oUsuarioBEresp.getApmaterno() + "'"
+                + ", '" + oUsuarioBEresp.getTelefonofijo() + "'"
+                + ", '" + oUsuarioBEresp.getTelefonomovil() + "'"
+                + ", '" + oUsuarioBEresp.getDireccion() + "'"
+                + ", '" + oUsuarioBEresp.getEmail() + "'"
+                + ", '" + oUsuarioBEresp.getIdtiposexo() + "'"
+                + ", " + oUsuarioBEresp.isInExist() + ""
+                + ", '" + oUsuarioBEresp.getIdrol() + "'"
+                + ", " + oUsuarioBEresp.isEstado() + ""
+                + ", '" + oUsuarioBEresp.getFecha_nacimiento() + "'"
+                + ", '" + oUsuarioBEresp.getEstado_civil() + "'"
+                + ", '" + oUsuarioBEresp.getCuenta_facebook() + "');");
+
+        oUsuarioBE = findUsuarioById(resultados);
 
         try {
 
             oUsuarioBEresp.setIndOpSp(1);
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             oUsuarioBEresp.setIndOpSp(2);
         }
 
