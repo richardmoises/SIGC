@@ -564,45 +564,40 @@ public class UsuarioDA extends BaseDA {
 
     public UsuarioBE addUser(UsuarioBE oUsuarioBE) {
 
-        // Mora y Huaycha
+              // Mora y Huaycha
         // realizando el registro de una nuevo usuario
-        UsuarioBE oUsuarioBEresp = new UsuarioBE();
-        UtilDAO utilDao = new UtilDAO();
+//        UsuarioBE oUsuarioBE = new UsuarioBE();
+        UtilDAO oUtilDAO = new UtilDAO();
 
-        int resultados = utilDao.ejecutarInsert("insert into "
-                + " persona(usuario,contrasenia,nrodocumento,nombre,appaterno,apmaterno,"
-                + "telefonofijo,telefonomovil,direccion,email,idtiposexo,estado,inExist,idrol,fecha_nacimiento,"
-                + "estado_civil,cuenta_facebook ) values ("
+        String cadquery = ("insert into "
+                + " usuario(nrodocumento,nombre,appaterno,apmaterno,"
+                + "telefonomovil,direccion,email,idtiposexo,estado,inExist,fecha_nacimiento,"
+                + "cuenta_facebook ) values ("
+                + " '" + oUsuarioBE.getNrodocumento() + "'"
+                + ", '" + oUsuarioBE.getNombre() + "'"
+                + ", '" + oUsuarioBE.getAppaterno() + "'"
+                + ", '" + oUsuarioBE.getApmaterno() + "'"
+                + ", '" + oUsuarioBE.getTelefonomovil() + "'"
+                + ", '" + oUsuarioBE.getDireccion() + "'"
+                + ", '" + oUsuarioBE.getEmail() + "'"
+                + ", '" + oUsuarioBE.getIdtiposexo() + "'"
+                + ", " + oUsuarioBE.isInExist() + ""
+                + ", " + oUsuarioBE.getEstado() + ""
+                + ", '" + oUsuarioBE.getFecha_nacimiento() + "'"
+                + ", '" + oUsuarioBE.getCuenta_facebook() + "');");
 
-                + " '" + oUsuarioBEresp.getUsuario() + "'"
-                + ", '" + oUsuarioBEresp.getContrasenia() + "'"
-                + ", '" + oUsuarioBEresp.getNrodocumento() + "'"
-                + ", '" + oUsuarioBEresp.getNombre() + "'"
-                + ", '" + oUsuarioBEresp.getAppaterno() + "'"
-                + ", '" + oUsuarioBEresp.getApmaterno() + "'"
-                + ", '" + oUsuarioBEresp.getTelefonofijo() + "'"
-                + ", '" + oUsuarioBEresp.getTelefonomovil() + "'"
-                + ", '" + oUsuarioBEresp.getDireccion() + "'"
-                + ", '" + oUsuarioBEresp.getEmail() + "'"
-                + ", '" + oUsuarioBEresp.getIdtiposexo() + "'"
-                + ", " + oUsuarioBEresp.isInExist() + ""
-                + ", '" + oUsuarioBEresp.getIdrol() + "'"
-                + ", " + oUsuarioBEresp.isEstado() + ""
-                + ", '" + oUsuarioBEresp.getFecha_nacimiento() + "'"
-                + ", '" + oUsuarioBEresp.getEstado_civil() + "'"
-                + ", '" + oUsuarioBEresp.getCuenta_facebook() + "');");
-
-        oUsuarioBE = findUsuarioById(resultados);
-
+        int cad = oUtilDAO.ejecutarUpdate(cadquery);
+//        oUsuarioBE = findUsuarioById(resultados);
+        System.out.println("resultado" + cad);
         try {
 
-            oUsuarioBEresp.setIndOpSp(1);
+            oUsuarioBE.setIndOpSp(1);
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            oUsuarioBEresp.setIndOpSp(2);
+            oUsuarioBE.setIndOpSp(2);
         }
 
-        return oUsuarioBEresp;
+        return oUsuarioBE;
     }
 
 }

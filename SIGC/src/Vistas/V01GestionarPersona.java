@@ -164,7 +164,6 @@ public class V01GestionarPersona extends javax.swing.JInternalFrame {
         BTNNUEVO.setText("NUEVO");
         BTNGUARDAR.setEnabled(false);
         BTNCANCELAR.setEnabled(false);
-
     }
 
     public void centrarVentana() {
@@ -194,6 +193,7 @@ public class V01GestionarPersona extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         TBLPERSONA = new javax.swing.JTable();
         TXTBUSCAR = new javax.swing.JTextField();
@@ -202,24 +202,24 @@ public class V01GestionarPersona extends javax.swing.JInternalFrame {
         BTNNUEVO = new javax.swing.JButton();
         BTNGUARDAR = new javax.swing.JButton();
         BTNCANCELAR = new javax.swing.JButton();
-        BTNREPORTES = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        CHKESTADO = new javax.swing.JCheckBox();
         TXTID = new javax.swing.JTextField();
         TXTNOMBRE = new javax.swing.JTextField();
         TXTAPEPATERNO = new javax.swing.JTextField();
         TXTAPEMATERNO = new javax.swing.JTextField();
-        jLabel5 = new javax.swing.JLabel();
         TXTNACIMIENTO = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        CHKESTADO = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -228,6 +228,8 @@ public class V01GestionarPersona extends javax.swing.JInternalFrame {
         TXTDIRECCION = new javax.swing.JTextField();
         TXTEMAIL = new javax.swing.JTextField();
         TXTFACEBOOK = new javax.swing.JTextField();
+
+        jButton3.setText("jButton3");
 
         setClosable(true);
         setIconifiable(true);
@@ -290,7 +292,7 @@ public class V01GestionarPersona extends javax.swing.JInternalFrame {
             }
         });
 
-        BTNREPORTES.setText("GENERAR REPORTES");
+        jButton6.setText("GENERAR REPORTES");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -304,133 +306,134 @@ public class V01GestionarPersona extends javax.swing.JInternalFrame {
                 .addGap(18, 18, 18)
                 .addComponent(BTNCANCELAR)
                 .addGap(18, 18, 18)
-                .addComponent(BTNREPORTES)
+                .addComponent(jButton6)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(17, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BTNNUEVO)
                     .addComponent(BTNGUARDAR)
                     .addComponent(BTNCANCELAR)
-                    .addComponent(BTNREPORTES))
-                .addContainerGap(17, Short.MAX_VALUE))
+                    .addComponent(jButton6))
+                .addContainerGap())
         );
 
-        jLabel1.setText("ID:");
+        jLabel3.setText("ID:");
 
-        jLabel2.setText("NOMBRE:");
+        jLabel4.setText("NOMBRE:");
 
-        jLabel3.setText("APELLIDO PATERNO:");
+        jLabel5.setText("APELLIDO PATERNO:");
 
-        jLabel4.setText("APELLIDO MATERNO:");
+        jLabel6.setText("APELLIDO MATERNO:");
 
-        jLabel5.setText("FECHA DE NACIMIENTO:");
+        jLabel7.setText("FECHA NACIMIENTO:");
 
-        jLabel6.setText("ESTADO:");
+        jLabel8.setText("ESTADO:");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel7)
                     .addComponent(jLabel6)
                     .addComponent(jLabel5)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(TXTID, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(TXTNOMBRE, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(TXTAPEPATERNO, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
-                        .addComponent(TXTAPEMATERNO)
-                        .addComponent(TXTNACIMIENTO, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(CHKESTADO))
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(CHKESTADO)
+                    .addComponent(TXTID, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TXTNACIMIENTO, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TXTNOMBRE)
+                    .addComponent(TXTAPEPATERNO)
+                    .addComponent(TXTAPEMATERNO, javax.swing.GroupLayout.DEFAULT_SIZE, 165, Short.MAX_VALUE))
+                .addContainerGap(210, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(jLabel3)
                     .addComponent(TXTID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(jLabel4)
                     .addComponent(TXTNOMBRE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
+                    .addComponent(jLabel5)
                     .addComponent(TXTAPEPATERNO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(jLabel6)
                     .addComponent(TXTAPEMATERNO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
+                    .addComponent(jLabel7)
                     .addComponent(TXTNACIMIENTO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
+                    .addComponent(jLabel8)
                     .addComponent(CHKESTADO))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("DATOS PERSONALES", jPanel3);
 
-        jLabel7.setText("DNI:");
+        jLabel1.setText("DNI:");
 
-        jLabel8.setText("CELULAR:");
+        jLabel2.setText("CELULAR:");
 
-        jLabel9.setText("DIRECCIÓN:");
+        jLabel9.setText("DIRECCION:");
 
-        jLabel10.setText("CORREO ELECTRÓNICO:");
+        jLabel10.setText("EMAIL:");
 
-        jLabel11.setText("FACEBOOK:");
+        jLabel11.setText("CUENTA FACEBOOK:");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(22, 22, 22)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel11)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel7))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel9)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(TXTDNI, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TXTCELULAR, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TXTDIRECCION)
                     .addComponent(TXTEMAIL)
-                    .addComponent(TXTFACEBOOK, javax.swing.GroupLayout.DEFAULT_SIZE, 191, Short.MAX_VALUE))
-                .addContainerGap(143, Short.MAX_VALUE))
+                    .addComponent(TXTFACEBOOK, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(TXTCELULAR, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                        .addComponent(TXTDNI, javax.swing.GroupLayout.Alignment.LEADING)))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
+                    .addComponent(jLabel1)
                     .addComponent(TXTDNI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
+                    .addComponent(jLabel2)
                     .addComponent(TXTCELULAR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(TXTDIRECCION, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -441,39 +444,39 @@ public class V01GestionarPersona extends javax.swing.JInternalFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(TXTFACEBOOK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("DATOS DE CONTACTO", jPanel4);
+        jTabbedPane1.addTab("DATOS CONTACTO", jPanel4);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jTabbedPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addComponent(TXTBUSCAR)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(BTNBUSCAR))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(9, 9, 9)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(TXTBUSCAR, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BTNBUSCAR, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TXTBUSCAR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BTNBUSCAR))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTabbedPane1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -608,7 +611,6 @@ public class V01GestionarPersona extends javax.swing.JInternalFrame {
         TXTEMAIL.setEnabled(true);
         TXTFACEBOOK.setEnabled(true);
         CHKESTADO.setEnabled(true);
-
     }//GEN-LAST:event_BTNNUEVOMouseClicked
 
     private void BTNGUARDARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNGUARDARActionPerformed
@@ -625,7 +627,11 @@ public class V01GestionarPersona extends javax.swing.JInternalFrame {
         oUsuarioBE.setDireccion(TXTDIRECCION.getText());
         oUsuarioBE.setEmail(TXTEMAIL.getText());
         oUsuarioBE.setCuenta_facebook(TXTFACEBOOK.getText());
-//        oUsuarioBE.setEstado(Boolean.parseBoolean(CHKESTADO.getText()));
+        if (CHKESTADO.isSelected()) {
+            oUsuarioBE.setEstado(true);
+        } else {
+            oUsuarioBE.setEstado(false);
+        }
 
         //En caso que no tenga ID usamos try-catch
         //(Por ejemplo cuando agrega una nueva persona el id va estar en blanco y trata de transformar
@@ -641,6 +647,10 @@ public class V01GestionarPersona extends javax.swing.JInternalFrame {
 
             if (opcion == 0) {
 //--------------------FALTA EL METODO ADDPERSONA--------------------------------
+               
+                  System.out.println("Nombrrrrrre "+oUsuarioBE.getNombre());
+                       
+                       
                 UsuarioBE respuesta = oUsuarioBL.addUser(oUsuarioBE);
 
                 if (respuesta.getIndOpSp() != 1) {
@@ -661,7 +671,7 @@ public class V01GestionarPersona extends javax.swing.JInternalFrame {
 
             //Opcion es 0 cuando selecciona si
             if (opcion == 0) {
-
+                System.out.println("estado vista" + oUsuarioBE);
                 UsuarioBE respuesta = oUsuarioBL.updateUser(oUsuarioBE);
 
                 if (respuesta.getIndOpSp() != 1) {
@@ -725,7 +735,6 @@ public class V01GestionarPersona extends javax.swing.JInternalFrame {
         TBLPERSONA.getTableHeader().getColumnModel().getColumn(10).setMaxWidth(0);
         TBLPERSONA.getTableHeader().getColumnModel().getColumn(10).setMaxWidth(0);
 
-
     }//GEN-LAST:event_BTNGUARDARActionPerformed
 
     private void TXTBUSCARKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TXTBUSCARKeyTyped
@@ -747,7 +756,6 @@ public class V01GestionarPersona extends javax.swing.JInternalFrame {
     private javax.swing.JButton BTNCANCELAR;
     private javax.swing.JButton BTNGUARDAR;
     private javax.swing.JButton BTNNUEVO;
-    private javax.swing.JButton BTNREPORTES;
     private javax.swing.JCheckBox CHKESTADO;
     private javax.swing.JTable TBLPERSONA;
     private javax.swing.JTextField TXTAPEMATERNO;
@@ -761,6 +769,8 @@ public class V01GestionarPersona extends javax.swing.JInternalFrame {
     private javax.swing.JTextField TXTID;
     private javax.swing.JTextField TXTNACIMIENTO;
     private javax.swing.JTextField TXTNOMBRE;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -778,8 +788,8 @@ public class V01GestionarPersona extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
-//REALIZA LOS FILTROS(BUSQUEDAS)
 
+//REALIZA LOS FILTROS(BUSQUEDAS)
     public void filtro() {
 
         filtro = TXTBUSCAR.getText();
@@ -789,5 +799,4 @@ public class V01GestionarPersona extends javax.swing.JInternalFrame {
 //-----------------------------------------------------------------------------   
     private TableRowSorter trsfiltro;
     String filtro;
-
 }
