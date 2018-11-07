@@ -291,6 +291,11 @@ public class V01GestionarPersona extends javax.swing.JInternalFrame {
                 BTNCANCELARMouseClicked(evt);
             }
         });
+        BTNCANCELAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNCANCELARActionPerformed(evt);
+            }
+        });
 
         jButton6.setText("GENERAR REPORTES");
 
@@ -416,9 +421,8 @@ public class V01GestionarPersona extends javax.swing.JInternalFrame {
                     .addComponent(TXTDIRECCION)
                     .addComponent(TXTEMAIL)
                     .addComponent(TXTFACEBOOK, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(TXTCELULAR, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
-                        .addComponent(TXTDNI, javax.swing.GroupLayout.Alignment.LEADING)))
+                    .addComponent(TXTCELULAR, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                    .addComponent(TXTDNI))
                 .addContainerGap(221, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -749,6 +753,10 @@ public class V01GestionarPersona extends javax.swing.JInternalFrame {
             TXTBUSCAR.setText(nombre);
         }
     }//GEN-LAST:event_TXTBUSCARKeyTyped
+
+    private void BTNCANCELARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNCANCELARActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BTNCANCELARActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
