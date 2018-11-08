@@ -4,6 +4,7 @@ import Beans.RolBE;
 import DAO.RolDA;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 
 public class RolBL {
 
@@ -100,6 +101,22 @@ public class RolBL {
             oRolDA = null;
         }
         return rs;
+    }
+
+    public List<RolBL> listarRolBL() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public RolBE addRol(RolBE oRolBE) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public RolBE updateRol(RolBE oRolBE) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public List<RolBE> listarRoles() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
