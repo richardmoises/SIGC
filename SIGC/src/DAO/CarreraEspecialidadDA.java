@@ -120,13 +120,22 @@ public class CarreraEspecialidadDA {
 
         CarreraEspecialidadBE oCarreraEspecialidadBE = new CarreraEspecialidadBE();
 
-        int resultados = utilDao.ejecutarInsert("insert into "
+        try{
+            
+            int resultados = utilDao.ejecutarInsert("insert into "
                 + " especialidad(carrera,descripcion,estado) values ("
                 + "'" + cCarreraEspecialidadBE.getCarrera() + "'"
                 + ", '" + cCarreraEspecialidadBE.getDescripcion() + "'"
                 + ", '" + cCarreraEspecialidadBE.getEstado() + "');");
 
-        oCarreraEspecialidadBE = findCarreraById(resultados);
+            oCarreraEspecialidadBE = findCarreraById(resultados);
+            oCarreraEspecialidadBE.setIndOpSp(1);
+        
+        }catch(Exception e){
+            oCarreraEspecialidadBE.setIndOpSp(2);
+        }
+        
+        
         return oCarreraEspecialidadBE;
     }
 
