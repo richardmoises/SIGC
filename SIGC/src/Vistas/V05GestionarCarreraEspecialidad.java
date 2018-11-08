@@ -81,6 +81,8 @@ public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame 
         if (frameSize.height > screenSize.height) {
             frameSize.height = screenSize.height;
         }
+        
+        
         if (frameSize.width > screenSize.width) {
             frameSize.width = screenSize.width;
         }
