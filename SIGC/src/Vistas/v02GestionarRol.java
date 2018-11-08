@@ -5,6 +5,17 @@
  */
 package Vistas;
 
+import Beans.RolBE;
+import Services.RolBL;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author CESDEDOCLAB04
@@ -13,9 +24,102 @@ public class v02GestionarRol extends javax.swing.JInternalFrame {
 
     /**
      * Creates new form v02GestionarRol
+     *
      */
+    RolBL oRolBL = new RolBL();
+
+    private void cargarDatosInicialesTabla1() {
+
+        //List<RolBE> listaRol = oRolBL.listarRoles();
+        List<RolBE> listaRol = new Arraylist();
+        
+
+        DefaultTableModel modelo;
+
+        String[] titulo = {"ID", "NOMBRE", "ESTADO"};
+        String[] registro = new String[3];
+        modelo = new DefaultTableModel(null, titulo);
+
+            for (RolBE itemPer : listaRol) {
+            registro[0] = itemPer.getIdrol() + "";         
+            registro[1] = itemPer.getNombrerol();
+            registro[2] = itemPer.setEstado() + "";
+
+            modelo.addRow(registro);
+        }
+        TBLROL.setModel(modelo);
+    }
+
     public v02GestionarRol() {
+
         initComponents();
+        centrarVentana();
+
+        //REALIZA LOS FILTROS(BUSQUEDAS)
+        TXTID.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(final KeyEvent e) {
+
+                repaint();
+
+            }
+        });
+
+        this.setTitle("GESTIONAR ROL");
+        cargarDatosInicialesTabla1();
+        
+            //----------------Para ocultar un columna (Columna ID)--------------------------
+        TBLROL.getColumnModel().getColumn(0).setMaxWidth(0);
+        TBLROL.getColumnModel().getColumn(0).setMinWidth(0);
+        TBLROL.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
+        TBLROL.getTableHeader().getColumnModel().getColumn(0).setMaxWidth(0);
+
+//----------------Para ocultar un columna (Columna NOMBRE)---------
+        TBLROL.getColumnModel().getColumn(1).setMaxWidth(0);
+        TBLROL.getColumnModel().getColumn(1).setMinWidth(0);
+        TBLROL.getTableHeader().getColumnModel().getColumn(1).setMaxWidth(0);
+        TBLROL.getTableHeader().getColumnModel().getColumn(1).setMaxWidth(0);
+
+//----------------Para ocultar un columna (ESTADO)-------------------------
+        TBLROL.getColumnModel().getColumn(2).setMaxWidth(0);
+        TBLROL.getColumnModel().getColumn(2).setMinWidth(0);
+        TBLROL.getTableHeader().getColumnModel().getColumn(2).setMaxWidth(0);
+        TBLROL.getTableHeader().getColumnModel().getColumn(2).setMaxWidth(0);
+
+//----------------Para ocultar un columna (Columna DESCRIPCION)---------------------
+        TBLROL.getColumnModel().getColumn(3).setMaxWidth(0);
+        TBLROL.getColumnModel().getColumn(3).setMinWidth(0);
+        TBLROL.getTableHeader().getColumnModel().getColumn(3).setMaxWidth(0);
+        TBLROL.getTableHeader().getColumnModel().getColumn(3).setMaxWidth(0);
+
+        TXTID.setEnabled(false);
+        TXTNOMBRE.setEnabled(false);
+        DESCTXT.setEnabled(false);
+        CHKESTADO.setEnabled(false);
+
+//----------------Deshabilitando los Botones---------------------------
+        BTNNUEVO.setEnabled(true);
+        BTNNUEVO.setText("NUEVO");
+        BTNGUARDAR.setEnabled(false);
+        BTNCANCELAR.setEnabled(false);
+                
+    }
+    public void centrarVentana() {
+        //El tamaño de nuestra ventana
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        //El tamaño de la aplicacion
+        Dimension frameSize = getSize();
+        //Hacer que la pantall de la aplicacion no exeda mi pantalla
+        if (frameSize.height > screenSize.height) {
+            frameSize.height = screenSize.height;
+        }
+        if (frameSize.width > screenSize.width) {
+            frameSize.width = screenSize.width;
+        }
+
+        //Centra Ventana
+        setLocation((screenSize.width - frameSize.width) / 2,
+                (screenSize.height - frameSize.height) / 7);
     }
 
     /**
@@ -27,21 +131,424 @@ public class v02GestionarRol extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        TBLROL = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        TXTID = new javax.swing.JTextField();
+        TXTNOMBRE = new javax.swing.JTextField();
+        CHKESTADO = new javax.swing.JCheckBox();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        DESCTXT = new javax.swing.JTextArea();
+        jPanel2 = new javax.swing.JPanel();
+        BTNNUEVO = new javax.swing.JButton();
+        BTNGUARDAR = new javax.swing.JButton();
+        BTNCANCELAR = new javax.swing.JButton();
+
+        TBLROL.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        TBLROL.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TBLROLMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(TBLROL);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos"));
+
+        jLabel1.setText("Id");
+
+        jLabel2.setText("Nombre");
+
+        jLabel4.setText("Estado");
+
+        jLabel5.setText("Descripcion");
+
+        TXTID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TXTIDActionPerformed(evt);
+            }
+        });
+
+        CHKESTADO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CHKESTADOActionPerformed(evt);
+            }
+        });
+
+        DESCTXT.setColumns(20);
+        DESCTXT.setRows(5);
+        jScrollPane2.setViewportView(DESCTXT);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(TXTNOMBRE, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CHKESTADO)
+                    .addComponent(TXTID, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TXTID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(TXTNOMBRE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(CHKESTADO))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Operaciones"));
+
+        BTNNUEVO.setText("NUEVO/MODIFICAR");
+        BTNNUEVO.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BTNNUEVOMouseClicked(evt);
+            }
+        });
+        BTNNUEVO.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNNUEVOActionPerformed(evt);
+            }
+        });
+
+        BTNGUARDAR.setText("GUARDAR");
+        BTNGUARDAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNGUARDARActionPerformed(evt);
+            }
+        });
+
+        BTNCANCELAR.setText("CANCELAR");
+        BTNCANCELAR.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BTNCANCELARMouseClicked(evt);
+            }
+        });
+        BTNCANCELAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTNCANCELARActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(BTNNUEVO)
+                .addGap(40, 40, 40)
+                .addComponent(BTNGUARDAR)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addComponent(BTNCANCELAR)
+                .addGap(6, 6, 6))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BTNNUEVO)
+                    .addComponent(BTNGUARDAR)
+                    .addComponent(BTNCANCELAR))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void TXTIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXTIDActionPerformed
+        // TODO add your handling code here:
+
+
+    }//GEN-LAST:event_TXTIDActionPerformed
+
+    private void BTNNUEVOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNNUEVOActionPerformed
+        // TODO add your handling code here:
+        if (BTNNUEVO.getText().equalsIgnoreCase("Modificar")) {
+            TXTID.setEnabled(true);
+            TXTNOMBRE.setEnabled(true);
+            CHKESTADO.setEnabled(true);
+            DESCTXT.setEnabled(true);
+
+        } else if (BTNNUEVO.getText().equalsIgnoreCase("Nuevo")) {
+            TXTID.setEnabled(true);
+            TXTNOMBRE.setEnabled(true);
+            CHKESTADO.setEnabled(true);
+            DESCTXT.setEnabled(true);
+
+            TXTID.setText("");
+            TXTNOMBRE.setText("");
+            CHKESTADO.setText(" ");
+            DESCTXT.setText(" ");
+
+        }
+
+        BTNCANCELAR.setEnabled(true);
+        BTNGUARDAR.setEnabled(true);
+    }//GEN-LAST:event_BTNNUEVOActionPerformed
+
+    private void BTNGUARDARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNGUARDARActionPerformed
+        // TODO add your handling code here:
+        int opcion = 0;
+        String tipoOperacion = BTNNUEVO.getText();
+
+        RolBE oRolBE = new RolBE();
+        oRolBE.setNombrerol(TXTNOMBRE.getText());
+        oRolBE.setDescripcion(DESCTXT.getText());
+        oRolBE.setEstado(isIcon);
+
+//        oUsuarioBE.setEstado(Boolean.parseBoolean(CHKESTADO.getText()));
+        //En caso que no tenga ID usamos try-catch
+        //(Por ejemplo cuando agrega una nueva persona el id va estar en blanco y trata de transformar
+        // en entero y ese transcurso sufre un error)
+        try {
+            oRolBE.setIdrol(Integer.parseInt(TXTID.getText()));
+        } catch (Exception e) {
+
+        }
+
+        if (tipoOperacion.equals("NUEVO")) {
+            opcion = JOptionPane.showConfirmDialog(this, "Confirma Agregar", "Agregar", JOptionPane.YES_NO_OPTION);
+
+            if (opcion == 0) {
+//--------------------FALTA EL METODO ADDPERSONA--------------------------------
+                RolBE respuesta = oRolBL.addRol(oRolBE);
+
+                if (respuesta.getIndOpSp() != 1) {
+                    JOptionPane.showMessageDialog(this, "Ha fallado");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Se ha realizado la Operación");
+                    cargarDatosInicialesTabla1();
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Canceló la Operación");
+
+            }
+
+//--------------------FALTA EL METODO MODIFYPERSONA--------------------------------
+        } else if (tipoOperacion.equals("MODIFICAR")) {
+            opcion = JOptionPane.showConfirmDialog(this, "Confirma Modificar", "Modificar", JOptionPane.YES_NO_OPTION);
+
+            //Opcion es 0 cuando selecciona si
+            if (opcion == 0) {
+
+                RolBE respuesta = oRolBL.updateRol(oRolBE);
+
+                if (respuesta.getIndOpSp() != 1) {
+                    JOptionPane.showMessageDialog(this, "Ha fallado");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Se ha realizado la Operación");
+                    cargarDatosInicialesTabla1();
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Canceló la Operación");
+
+            }
+        }
+
+
+    }//GEN-LAST:event_BTNGUARDARActionPerformed
+
+    private void TBLROLMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TBLROLMouseClicked
+        // TODO add your handling code here:
+        int fila = TBLROL.rowAtPoint(evt.getPoint());
+        TableModel model = TBLROL.getModel();
+
+        TXTID.setText(TBLROL.getValueAt(fila, 0).toString());
+        TXTNOMBRE.setText(TBLROL.getValueAt(fila, 1).toString());
+        DESCTXT.setText(TBLROL.getValueAt(fila, 2).toString());
+
+        String gf = model.getValueAt(fila, 10).toString();
+        if (gf.equals("true")) {
+            CHKESTADO.setSelected(true);
+        } else {
+            CHKESTADO.setSelected(false);
+        }
+
+//        String(CHKESTADO, Integer.parseInt(TBLPERSONA.getValueAt(fila, 5).toString()));
+//----------------Deshabilitando los Cuadros de Texto---------------------------
+        TXTID.setEnabled(false);
+        TXTNOMBRE.setEnabled(false);
+        DESCTXT.setText("");
+        CHKESTADO.setEnabled(false);
+
+//---------------Modificando los Botones----------------------------------------
+        BTNNUEVO.setEnabled(true);
+        BTNNUEVO.setText("MODIFICAR");
+        DESCTXT.setText("");
+        BTNGUARDAR.setEnabled(false);
+        BTNCANCELAR.setEnabled(true);
+    }//GEN-LAST:event_TBLROLMouseClicked
+
+    private void BTNCANCELARMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNCANCELARMouseClicked
+        // TODO add your handling code here:
+        TXTID.setEnabled(false);
+        TXTNOMBRE.setEnabled(false);
+        DESCTXT.setText("");
+        CHKESTADO.setEnabled(false);
+
+//        CHKESTADO.setEnabled(false);
+        CHKESTADO.setSelected(false);
+
+        BTNNUEVO.setEnabled(true);
+        BTNNUEVO.setText("NUEVO");
+        DESCTXT.setText("");
+        BTNGUARDAR.setEnabled(false);
+        BTNCANCELAR.setEnabled(false);
+
+        TXTID.setText("");
+        TXTNOMBRE.setText("");
+        DESCTXT.setText("");
+        CHKESTADO.setText("");
+    }//GEN-LAST:event_BTNCANCELARMouseClicked
+
+    private void BTNNUEVOMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BTNNUEVOMouseClicked
+        // TODO add your handling code here:
+        TXTID.setEnabled(false);
+        TXTNOMBRE.setEnabled(true);
+        DESCTXT.setEnabled(true);
+        CHKESTADO.setEnabled(true);
+    }//GEN-LAST:event_BTNNUEVOMouseClicked
+
+    private void CHKESTADOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CHKESTADOActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_CHKESTADOActionPerformed
+
+    private void BTNCANCELARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTNCANCELARActionPerformed
+        // TODO add your handling code here:
+         BTNNUEVO.setEnabled(true);
+         BTNNUEVO.setText("Nuevo");
+        
+        BTNCANCELAR.setEnabled(false);
+        
+        BTNGUARDAR.setEnabled(false);
+        
+        TXTID.setText("");
+        TXTNOMBRE.setText(" ");
+        CHKESTADO.setText(" ");
+        DESCTXT.setText(" ");
+        
+        
+         TXTNOMBRE.setEnabled(false);
+         CHKESTADO.setEnabled(false);
+         DESCTXT.setEnabled(false);
+        
+    }//GEN-LAST:event_BTNCANCELARActionPerformed
+/**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(v02GestionarRol.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(v02GestionarRol.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(v02GestionarRol.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(v02GestionarRol.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new v02GestionarRol().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTNCANCELAR;
+    private javax.swing.JButton BTNGUARDAR;
+    private javax.swing.JButton BTNNUEVO;
+    private javax.swing.JCheckBox CHKESTADO;
+    private javax.swing.JTextArea DESCTXT;
+    private javax.swing.JTable TBLROL;
+    private javax.swing.JTextField TXTID;
+    private javax.swing.JTextField TXTNOMBRE;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     // End of variables declaration//GEN-END:variables
 }
