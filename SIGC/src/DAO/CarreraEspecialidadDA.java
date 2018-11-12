@@ -87,7 +87,7 @@ public class CarreraEspecialidadDA {
 
         UtilDAO oUtilDAO = new UtilDAO();
         try {
-            String cadquery = ("update usuario "                  
+            String cadquery = ("update especialidad "                  
                     + " set carrera = '" + oCarreraEspecialidadBE.getCarrera()+ "' "
                     + " ,descripcion = '" + oCarreraEspecialidadBE.getDescripcion() + "' "
                     + " ,estado = '" + oCarreraEspecialidadBE.getEstado() + "' "
