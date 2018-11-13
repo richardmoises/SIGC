@@ -71,6 +71,8 @@ public class Principal extends javax.swing.JFrame {
         jMenu7 = new javax.swing.JMenu();
         JMIAyuda = new javax.swing.JMenuItem();
         JMIAcercaDe = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Sistema de Emisión de Certificados");
@@ -208,6 +210,18 @@ public class Principal extends javax.swing.JFrame {
 
         JMBMenu.add(jMenu7);
 
+        jMenu2.setText("Persona");
+
+        jMenuItem1.setText("Gestionar Persona");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem1);
+
+        JMBMenu.add(jMenu2);
+
         setJMenuBar(JMBMenu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -316,6 +330,13 @@ public class Principal extends javax.swing.JFrame {
 
     }//GEN-LAST:event_JMIAyudaActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+
+        V01GestionarPersona per = new V01GestionarPersona();
+        JDPContenedor.add(per);
+        per.show();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -342,7 +363,9 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JToolBar.Separator jSeparator4;
@@ -369,35 +392,34 @@ public class Principal extends javax.swing.JFrame {
         SimpleDateFormat mes = new SimpleDateFormat("MMMM");
         SimpleDateFormat anio = new SimpleDateFormat("yyyy");
         JLBFecha.setText(dia.format(d).toUpperCase() + " DE " + mes.format(d).toUpperCase() + " DEL " + anio.format(d));
-        
+
         validarRolUsuario(oUsuarioBE);
-       
+
     }
 
     private void validarRolUsuario(UsuarioBE oUsuarioBE) {
 
         // actualizando los menus segun el permiso que tenga
         UsuarioBL oUsuarioBL = new UsuarioBL();
-        List<Integer> listaIds = 
-                oUsuarioBL.obtenerIdVistaByUsuario(oUsuarioBE);
+        List<Integer> listaIds
+                = oUsuarioBL.obtenerIdVistaByUsuario(oUsuarioBE);
 
-        for(Integer id : listaIds){
+        for (Integer id : listaIds) {
             mapJMI.get(id).setEnabled(true);
         }
-        
+
         // mostrando los datos de la persona que se esta
         // logueando o entrando al sistema
         UsuarioBE oUsuarioBE2 = new UsuarioBE();
-        oUsuarioBE2 = oUsuarioBL.findUsuarioByUserAndPass(oUsuarioBE.getUsuario()
-                ,oUsuarioBE.getContrasenia());
-        
-        if(oUsuarioBE2 != null){
+        oUsuarioBE2 = oUsuarioBL.findUsuarioByUserAndPass(oUsuarioBE.getUsuario(), oUsuarioBE.getContrasenia());
+
+        if (oUsuarioBE2 != null) {
             JLBUsuario.setText(oUsuarioBE2.getNombre()
-                +" "+oUsuarioBE2.getAppaterno()
-                +" "+oUsuarioBE2.getApmaterno());
+                    + " " + oUsuarioBE2.getAppaterno()
+                    + " " + oUsuarioBE2.getApmaterno());
+
         }
-        
-        
+
     }
 }
 

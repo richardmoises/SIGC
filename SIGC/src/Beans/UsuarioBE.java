@@ -127,7 +127,7 @@ public class UsuarioBE {
 
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
 
     }
