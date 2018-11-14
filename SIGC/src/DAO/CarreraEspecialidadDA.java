@@ -44,9 +44,11 @@ public class CarreraEspecialidadDA {
                 oCarreraEspecialidadBE.setEstado(estado);
 
                 listarCarrera.add(oCarreraEspecialidadBE);
+                
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            
         }
 
         return listarCarrera;

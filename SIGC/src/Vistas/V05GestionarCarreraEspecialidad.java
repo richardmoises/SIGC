@@ -66,7 +66,9 @@ public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame 
         TBLCARRERA.getColumnModel().getColumn(2).setMinWidth(0);
         TBLCARRERA.getTableHeader().getColumnModel().getColumn(2).setMaxWidth(0);
         TBLCARRERA.getTableHeader().getColumnModel().getColumn(2).setMaxWidth(0);
+        
 //Para ocultar un columna (ESTADO)
+        
         TBLCARRERA.getColumnModel().getColumn(3).setMaxWidth(0);
         TBLCARRERA.getColumnModel().getColumn(3).setMinWidth(0);
         TBLCARRERA.getTableHeader().getColumnModel().getColumn(3).setMaxWidth(0);
