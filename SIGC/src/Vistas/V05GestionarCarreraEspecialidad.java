@@ -66,7 +66,9 @@ public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame 
         TBLCARRERA.getColumnModel().getColumn(2).setMinWidth(0);
         TBLCARRERA.getTableHeader().getColumnModel().getColumn(2).setMaxWidth(0);
         TBLCARRERA.getTableHeader().getColumnModel().getColumn(2).setMaxWidth(0);
+        
 //Para ocultar un columna (ESTADO)
+        
         TBLCARRERA.getColumnModel().getColumn(3).setMaxWidth(0);
         TBLCARRERA.getColumnModel().getColumn(3).setMinWidth(0);
         TBLCARRERA.getTableHeader().getColumnModel().getColumn(3).setMaxWidth(0);
@@ -127,12 +129,12 @@ public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame 
         jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel5.setText("CARRERAS PROFESIONALES");
 
+        TBLCARRERA.setBackground(new java.awt.Color(0, 102, 51));
+        TBLCARRERA.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(0, 102, 102)));
+        TBLCARRERA.setForeground(new java.awt.Color(255, 255, 255));
         TBLCARRERA.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
@@ -147,12 +149,16 @@ public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame 
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel1.setText("ID");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel1.setText("ID :");
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setText("CARRERA :");
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("DESCRIPCION :");
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel4.setText("ESTADO :");
 
         descripcion_txt.setColumns(20);
@@ -166,24 +172,21 @@ public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame 
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(3, 3, 3)
-                                .addComponent(jLabel4))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(119, 119, 119)
-                        .addComponent(jLabel3)))
-                .addGap(51, 51, 51)
+                        .addComponent(jLabel3))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(carrera_txt)
-                        .addComponent(id_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE))
+                    .addComponent(carrera_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(id_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(estado_jcb, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(75, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -208,6 +211,9 @@ public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame 
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
+        guardar_btn.setBackground(new java.awt.Color(0, 0, 51));
+        guardar_btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        guardar_btn.setForeground(new java.awt.Color(255, 255, 255));
         guardar_btn.setText("GUARDAR");
         guardar_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -215,6 +221,9 @@ public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame 
             }
         });
 
+        cancelar_btn.setBackground(new java.awt.Color(0, 0, 51));
+        cancelar_btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        cancelar_btn.setForeground(new java.awt.Color(255, 255, 255));
         cancelar_btn.setText("CANCELAR");
         cancelar_btn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,6 +231,9 @@ public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame 
             }
         });
 
+        nue_modi_btn.setBackground(new java.awt.Color(0, 0, 51));
+        nue_modi_btn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        nue_modi_btn.setForeground(new java.awt.Color(255, 255, 255));
         nue_modi_btn.setText("NUEVO/MODIFICAR");
         nue_modi_btn.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -238,14 +250,14 @@ public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame 
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(147, Short.MAX_VALUE)
                 .addComponent(nue_modi_btn)
                 .addGap(18, 18, 18)
                 .addComponent(guardar_btn)
                 .addGap(18, 18, 18)
                 .addComponent(cancelar_btn)
-                .addGap(24, 24, 24))
+                .addGap(99, 99, 99))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -263,16 +275,14 @@ public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame 
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(118, 118, 118)

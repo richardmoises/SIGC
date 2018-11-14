@@ -44,9 +44,11 @@ public class CarreraEspecialidadDA {
                 oCarreraEspecialidadBE.setEstado(estado);
 
                 listarCarrera.add(oCarreraEspecialidadBE);
+                
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
+            
         }
 
         return listarCarrera;
@@ -87,7 +89,7 @@ public class CarreraEspecialidadDA {
 
         UtilDAO oUtilDAO = new UtilDAO();
         try {
-            String cadquery = ("update usuario "                  
+            String cadquery = ("update especialidad "                  
                     + " set carrera = '" + oCarreraEspecialidadBE.getCarrera()+ "' "
                     + " ,descripcion = '" + oCarreraEspecialidadBE.getDescripcion() + "' "
                     + " ,estado = '" + oCarreraEspecialidadBE.getEstado() + "' "

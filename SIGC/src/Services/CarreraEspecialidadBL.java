@@ -15,8 +15,11 @@ public class CarreraEspecialidadBL {
     public List<CarreraEspecialidadBE> listarCarrera() {
 
         CarreraEspecialidadDA oCarreraEspecialidadDA = new CarreraEspecialidadDA();
+        
         //se guarda la lista en oListaUsuarioBE
+        
         List<CarreraEspecialidadBE> oListaCarreraEspecialidadBE = oCarreraEspecialidadDA.listarCarreras();
+        
 
         //retornando la lista UsuarioBE
         return oListaCarreraEspecialidadBE;
