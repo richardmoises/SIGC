@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
  * @author CESDEDOCLAB04
  */
 public class CarreraEspecialidadBL {
+    
 
     public List<CarreraEspecialidadBE> listarCarrera() {
 

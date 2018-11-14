@@ -346,6 +346,7 @@ public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame 
         if (estado_jcb.isSelected()) {
             oCarreraEspecialidadBE.setEstado(true);
         } else {
+            
             oCarreraEspecialidadBE.setEstado(false);
         }
 

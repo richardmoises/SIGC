@@ -20,6 +20,7 @@ public class CarreraEspecialidadDA {
     UtilDAO utilDao = new UtilDAO();
 
     public List<CarreraEspecialidadBE> listarCarreras() {
+        
 
         ArrayList<CarreraEspecialidadBE> listarCarrera = new ArrayList<>();
         UtilDAO oUtilDAO = new UtilDAO();
