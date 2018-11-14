@@ -24,7 +24,7 @@ public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame 
 
     private void cargarDatosInicialesTabla() {
 
-
+        //creando variable para listar carrera
         List< CarreraEspecialidadBE> listacarrera = oCarreraEspecialidadBL.listarCarrera();
 
         DefaultTableModel modelo;
@@ -33,7 +33,7 @@ public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame 
         String[] registro = new String[4];
 
         modelo = new DefaultTableModel(null, titulo);
-
+        //ingresando datosa a la tabla
         for (CarreraEspecialidadBE itemPer : listacarrera) {
             registro[0] = itemPer.getId() + "";
             registro[1] = itemPer.getCarrera();
@@ -48,6 +48,8 @@ public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame 
      * Creates new form V05GestionarCarreraEspecialidad
      */
     public V05GestionarCarreraEspecialidad() {
+        //habilitando y deshabilitando botones 
+        
         initComponents();
             id_txt.setEnabled(false);
         carrera_txt.setEnabled(false);
@@ -77,7 +79,7 @@ public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         //El tamaño de la aplicacion
         Dimension frameSize = getSize();
-        //Hacer que la pantall de la aplicacion no exeda mi pantalla
+        //Hacer que la pantalla de la aplicacion no exeda mi pantalla
         if (frameSize.height > screenSize.height) {
             frameSize.height = screenSize.height;
         }
@@ -299,7 +301,7 @@ public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame 
     private void TBLCARRERAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TBLCARRERAMouseClicked
         int fila = TBLCARRERA.rowAtPoint(evt.getPoint());
         TableModel model = TBLCARRERA.getModel();
-
+        //seteando datos a la tabla
         id_txt.setText(TBLCARRERA.getValueAt(fila, 0).toString());
         carrera_txt.setText(TBLCARRERA.getValueAt(fila, 1).toString());
         descripcion_txt.setText(TBLCARRERA.getValueAt(fila, 2).toString());
@@ -406,16 +408,17 @@ public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame 
     }//GEN-LAST:event_guardar_btnActionPerformed
 
     private void cancelar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelar_btnActionPerformed
+        //deshabilitando los cuadros de texto
         id_txt.setEnabled(false);
         carrera_txt.setEnabled(false);
         descripcion_txt.setEnabled(false);
         estado_jcb.setEnabled(false);
-
+        //habilitando el boton nuevo/modificar
         nue_modi_btn.setEnabled(true);
         nue_modi_btn.setText("NUEVO");
         guardar_btn.setEnabled(false);
         cancelar_btn.setEnabled(false);
-
+        //limpiando los cuadros de texto
         id_txt.setText("");
         carrera_txt.setText("");
         descripcion_txt.setText("");
@@ -423,6 +426,7 @@ public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame 
     }//GEN-LAST:event_cancelar_btnActionPerformed
 
     private void nue_modi_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nue_modi_btnMouseClicked
+        //habilitando los cuADROs DE TEXTO
         id_txt.setEnabled(false);
         carrera_txt.setEnabled(true);
         descripcion_txt.setEnabled(true);
@@ -430,12 +434,17 @@ public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame 
     }//GEN-LAST:event_nue_modi_btnMouseClicked
 
     private void nue_modi_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nue_modi_btnActionPerformed
-        if (nue_modi_btn.getText().equalsIgnoreCase("MODIFICAR")) {
+            //si el boton nue_modi es igual a modificar habilita los cuadros de texto
+            //carrera, descripcion y estado
+            if (nue_modi_btn.getText().equalsIgnoreCase("MODIFICAR")) {
             carrera_txt.setEnabled(true);
             descripcion_txt.setEnabled(true);
             estado_jcb.setEnabled(true);
             nue_modi_btn.setEnabled(false);
 
+            //si el boton nue_modi es igual a nuevo habilita los cuadros de texto
+            //y limpia
+            
         } else if (nue_modi_btn.getText().equalsIgnoreCase("NUEVO")) {
             carrera_txt.setEnabled(true);
             descripcion_txt.setEnabled(true);
