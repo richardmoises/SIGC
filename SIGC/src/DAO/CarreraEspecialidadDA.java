@@ -10,20 +10,20 @@ import Services.RolBL;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
 /**
  *
  * @author CESDEDOCLAB04
  */
 public class CarreraEspecialidadDA {
 
-
+        //se realiza la coneccion a la base de datos 
     UtilDAO utilDao = new UtilDAO();
 
     public List<CarreraEspecialidadBE> listarCarreras() {
 
         ArrayList<CarreraEspecialidadBE> listarCarrera = new ArrayList<>();
         UtilDAO oUtilDAO = new UtilDAO();
-        
 
         oUtilDAO.ejecutarQuery("select * from especialidad  ");
 
@@ -45,19 +45,22 @@ public class CarreraEspecialidadDA {
                 oCarreraEspecialidadBE.setEstado(estado);
 
                 listarCarrera.add(oCarreraEspecialidadBE);
-                
+
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            
-        }
 
+        }
+//retorna listarCarrera
         return listarCarrera;
-   
+
     }
 
     public CarreraEspecialidadBE findCarreraById(int id) {
 
+        //se realiza la coneccion a la base de datos y 
+        //se obtiene una carrera en la cual tiene 
+        //el id enviado
         CarreraEspecialidadBE oCarreraEspecialidadBE = new CarreraEspecialidadBE();
 
         ResultSet resultados = utilDao.ejecutarQuery(
@@ -81,21 +84,21 @@ public class CarreraEspecialidadDA {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
+//retorna oCarreraEspecialidadBE
         return oCarreraEspecialidadBE;
     }
 
-    
-     public CarreraEspecialidadBE updatecarrera(CarreraEspecialidadBE oCarreraEspecialidadBE) {
+    public CarreraEspecialidadBE updatecarrera(CarreraEspecialidadBE oCarreraEspecialidadBE) {
 
+        //se realiza la coneccion a la base de datos 
         UtilDAO oUtilDAO = new UtilDAO();
+
         try {
-            String cadquery = ("update especialidad "                  
-                    + " set carrera = '" + oCarreraEspecialidadBE.getCarrera()+ "' "
+            String cadquery = ("update especialidad "
+                    + " set carrera = '" + oCarreraEspecialidadBE.getCarrera() + "' "
                     + " ,descripcion = '" + oCarreraEspecialidadBE.getDescripcion() + "' "
                     + " ,estado = '" + oCarreraEspecialidadBE.getEstado() + "' "
-                   
-                    + " where id= " + oCarreraEspecialidadBE.getId()+ ";");
+                    + " where id= " + oCarreraEspecialidadBE.getId() + ";");
 
             int cad = oUtilDAO.ejecutarUpdate(cadquery);
 
@@ -104,6 +107,8 @@ public class CarreraEspecialidadDA {
             oCarreraEspecialidadBE.setIndOpSp(1);
 
             //se realiza la comprobacion de la actualizacion.
+            //  retorna uno (1) cuando la insercion se completa
+            //   y dos (2) cuando la insercion falla
             if (cad == 1) {
                 oCarreraEspecialidadBE.setIndOpSp(1);
             } else {
@@ -113,36 +118,36 @@ public class CarreraEspecialidadDA {
         } catch (Exception e) {
             oCarreraEspecialidadBE.setIndOpSp(2);
         }
-        
-
+        //retorna oCarreraEspecialidadBE
         return oCarreraEspecialidadBE;
     }
-
-   
 
     public CarreraEspecialidadBE addCarrera(CarreraEspecialidadBE cCarreraEspecialidadBE) {
 
+        //se realiza la coneccion a la base de datos 
         CarreraEspecialidadBE oCarreraEspecialidadBE = new CarreraEspecialidadBE();
 
-        try{
-            
+        try {
+
             int resultados = utilDao.ejecutarInsert("insert into "
-                + " especialidad(carrera,descripcion,estado) values ("
-                + "'" + cCarreraEspecialidadBE.getCarrera() + "'"
-                + ", '" + cCarreraEspecialidadBE.getDescripcion() + "'"
-                + ", '" + cCarreraEspecialidadBE.getEstado() + "');");
+                    + " especialidad(carrera,descripcion,estado) values ("
+                    + "'" + cCarreraEspecialidadBE.getCarrera() + "'"
+                    + ", '" + cCarreraEspecialidadBE.getDescripcion() + "'"
+                    + ", '" + cCarreraEspecialidadBE.getEstado() + "');");
 
             oCarreraEspecialidadBE = findCarreraById(resultados);
+
+        //se realiza la comprobacion de una nueva carrera.
+        //  retorna uno (1) cuando la insercion se completa
+        //   y dos (2) cuando la insercion falla
             oCarreraEspecialidadBE.setIndOpSp(1);
-        
-        }catch(Exception e){
+
+        } catch (Exception e) {
             oCarreraEspecialidadBE.setIndOpSp(2);
         }
-        
-        
+
+        //retorna oCarreraEspecialidadBE
         return oCarreraEspecialidadBE;
     }
-
-   
 
 }
