@@ -5,17 +5,91 @@
  */
 package Vistas;
 
+import Beans.CarreraEspecialidadBE;
+import Services.CarreraEspecialidadBL;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+
 /**
  *
  * @author CESDEDOCLAB04
  */
 public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame {
 
+     CarreraEspecialidadBL oCarreraEspecialidadBL = new CarreraEspecialidadBL();
+
+    private void cargarDatosInicialesTabla() {
+
+
+        List< CarreraEspecialidadBE> listacarrera = oCarreraEspecialidadBL.listarCarrera();
+
+        DefaultTableModel modelo;
+
+        String[] titulo = {"id", "carrera", "descripcion", "estado"};
+        String[] registro = new String[4];
+
+        modelo = new DefaultTableModel(null, titulo);
+
+        for (CarreraEspecialidadBE itemPer : listacarrera) {
+            registro[0] = itemPer.getId() + "";
+            registro[1] = itemPer.getCarrera();
+            registro[2] = itemPer.getDescripcion();
+            registro[3] = itemPer.getEstado() + "";
+            modelo.addRow(registro);
+        }
+
+        TBLCARRERA.setModel(modelo);
+           }
     /**
      * Creates new form V05GestionarCarreraEspecialidad
      */
     public V05GestionarCarreraEspecialidad() {
         initComponents();
+            id_txt.setEnabled(false);
+        carrera_txt.setEnabled(false);
+        descripcion_txt.setEnabled(false);
+        estado_jcb.setEnabled(false);
+        nue_modi_btn.setEnabled(true);
+        nue_modi_btn.setText("NUEVO");
+        cancelar_btn.setEnabled(false);
+        guardar_btn.setEnabled(false);
+
+
+        cargarDatosInicialesTabla();
+
+//Para ocultar un columna (descripcion)
+        TBLCARRERA.getColumnModel().getColumn(2).setMaxWidth(0);
+        TBLCARRERA.getColumnModel().getColumn(2).setMinWidth(0);
+        TBLCARRERA.getTableHeader().getColumnModel().getColumn(2).setMaxWidth(0);
+        TBLCARRERA.getTableHeader().getColumnModel().getColumn(2).setMaxWidth(0);
+//Para ocultar un columna (ESTADO)
+        TBLCARRERA.getColumnModel().getColumn(3).setMaxWidth(0);
+        TBLCARRERA.getColumnModel().getColumn(3).setMinWidth(0);
+        TBLCARRERA.getTableHeader().getColumnModel().getColumn(3).setMaxWidth(0);
+        TBLCARRERA.getTableHeader().getColumnModel().getColumn(3).setMaxWidth(0);
+    }
+     public void centrarVentana() {
+        //El tamaño de nuestra ventana
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        //El tamaño de la aplicacion
+        Dimension frameSize = getSize();
+        //Hacer que la pantall de la aplicacion no exeda mi pantalla
+        if (frameSize.height > screenSize.height) {
+            frameSize.height = screenSize.height;
+        }
+        
+        
+        if (frameSize.width > screenSize.width) {
+            frameSize.width = screenSize.width;
+        }
+
+        //Centra Ventana
+        setLocation((screenSize.width - frameSize.width) / 2,
+                (screenSize.height - frameSize.height) / 7);
     }
 
     /**
@@ -27,21 +101,374 @@ public class V05GestionarCarreraEspecialidad extends javax.swing.JInternalFrame 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        TBLCARRERA = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        id_txt = new javax.swing.JTextField();
+        carrera_txt = new javax.swing.JTextField();
+        estado_jcb = new javax.swing.JCheckBox();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        descripcion_txt = new javax.swing.JTextArea();
+        jPanel2 = new javax.swing.JPanel();
+        guardar_btn = new javax.swing.JButton();
+        cancelar_btn = new javax.swing.JButton();
+        nue_modi_btn = new javax.swing.JButton();
+
+        setClosable(true);
+        setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
+
+        jLabel5.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel5.setText("CARRERAS PROFESIONALES");
+
+        TBLCARRERA.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        TBLCARRERA.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                TBLCARRERAMouseClicked(evt);
+            }
+        });
+        jScrollPane3.setViewportView(TBLCARRERA);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setText("ID");
+
+        jLabel2.setText("CARRERA :");
+
+        jLabel3.setText("DESCRIPCION :");
+
+        jLabel4.setText("ESTADO :");
+
+        descripcion_txt.setColumns(20);
+        descripcion_txt.setRows(5);
+        jScrollPane2.setViewportView(descripcion_txt);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(129, 129, 129)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(3, 3, 3)
+                                .addComponent(jLabel4))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(119, 119, 119)
+                        .addComponent(jLabel3)))
+                .addGap(51, 51, 51)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(carrera_txt)
+                        .addComponent(id_txt, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE))
+                    .addComponent(estado_jcb, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(75, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap(24, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(id_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(carrera_txt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(estado_jcb, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)))
+        );
+
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+
+        guardar_btn.setText("GUARDAR");
+        guardar_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardar_btnActionPerformed(evt);
+            }
+        });
+
+        cancelar_btn.setText("CANCELAR");
+        cancelar_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cancelar_btnActionPerformed(evt);
+            }
+        });
+
+        nue_modi_btn.setText("NUEVO/MODIFICAR");
+        nue_modi_btn.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nue_modi_btnMouseClicked(evt);
+            }
+        });
+        nue_modi_btn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nue_modi_btnActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(nue_modi_btn)
+                .addGap(18, 18, 18)
+                .addComponent(guardar_btn)
+                .addGap(18, 18, 18)
+                .addComponent(cancelar_btn)
+                .addGap(24, 24, 24))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(37, 37, 37)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(guardar_btn)
+                    .addComponent(cancelar_btn)
+                    .addComponent(nue_modi_btn))
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 394, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(118, 118, 118)
+                .addComponent(jLabel5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 274, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void TBLCARRERAMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TBLCARRERAMouseClicked
+        int fila = TBLCARRERA.rowAtPoint(evt.getPoint());
+        TableModel model = TBLCARRERA.getModel();
+
+        id_txt.setText(TBLCARRERA.getValueAt(fila, 0).toString());
+        carrera_txt.setText(TBLCARRERA.getValueAt(fila, 1).toString());
+        descripcion_txt.setText(TBLCARRERA.getValueAt(fila, 2).toString());
+        String gf = model.getValueAt(fila, 3).toString();
+
+        if (gf.equals("true")) {
+            estado_jcb.setSelected(true);
+        } else {
+            estado_jcb.setSelected(false);
+
+        }
+
+        //Deshabilitando los Cuadros de Texto
+        id_txt.setEnabled(false);
+        carrera_txt.setEnabled(false);
+        descripcion_txt.setEnabled(false);
+        estado_jcb.setEnabled(false);
+
+        //Modificando los Botones
+        nue_modi_btn.setEnabled(true);
+        nue_modi_btn.setText("MODIFICAR");
+        guardar_btn.setEnabled(false);
+        cancelar_btn.setEnabled(true);
+    }//GEN-LAST:event_TBLCARRERAMouseClicked
+
+    private void guardar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardar_btnActionPerformed
+        int opcion = 0;
+        String tipoOperacion = nue_modi_btn.getText();
+
+        CarreraEspecialidadBE oCarreraEspecialidadBE = new CarreraEspecialidadBE();
+        oCarreraEspecialidadBE.setCarrera(carrera_txt.getText());
+        oCarreraEspecialidadBE.setDescripcion(descripcion_txt.getText());
+
+        if (estado_jcb.isSelected()) {
+            oCarreraEspecialidadBE.setEstado(true);
+        } else {
+            oCarreraEspecialidadBE.setEstado(false);
+        }
+
+        //En caso que no tenga ID usamos try-catch
+        //(Por ejemplo cuando agrega una nueva CARRERA el id va estar en blanco y trata de transformar
+            // en entero y ese transcurso sufre un error)
+        try {
+            oCarreraEspecialidadBE.setId(Integer.parseInt(id_txt.getText()));
+        } catch (Exception e) {
+
+        }
+
+        if (tipoOperacion.equals("NUEVO")) {
+            opcion = JOptionPane.showConfirmDialog(this, "Confirma Agregar", "Agregar", JOptionPane.YES_NO_OPTION);
+
+            if (opcion == 0) {
+                //FALTA EL METODO ADDCARRERA
+
+                System.out.println("Nombre " + oCarreraEspecialidadBE.getCarrera());
+
+                CarreraEspecialidadBE respuesta = oCarreraEspecialidadBL.addCarrera(oCarreraEspecialidadBE);
+
+                if (respuesta.getIndOpSp() != 1) {
+                    JOptionPane.showMessageDialog(this, "Ha fallado");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Se ha realizado la Operación");
+                    cargarDatosInicialesTabla();
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Canceló la Operación");
+
+            }
+
+            //FALTA EL METODO MODICARRERA
+        } else if (tipoOperacion.equals("MODIFICAR")) {
+            opcion = JOptionPane.showConfirmDialog(this, "Confirma Modificar", "Modificar", JOptionPane.YES_NO_OPTION);
+
+            //Opcion es 0 cuando selecciona si
+            if (opcion == 0) {
+                System.out.println("estado vista" + oCarreraEspecialidadBE);
+                CarreraEspecialidadBE respuesta = oCarreraEspecialidadBL.updateCarrera(oCarreraEspecialidadBE);
+
+                if (respuesta.getIndOpSp() != 1) {
+                    JOptionPane.showMessageDialog(this, "Ha fallado");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Se ha realizado la Operación");
+                    cargarDatosInicialesTabla();
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Canceló la Operación");
+
+            }
+        }
+
+        //Para ocultar un columna (descripcion)
+
+        TBLCARRERA.getColumnModel().getColumn(2).setMaxWidth(0);
+        TBLCARRERA.getColumnModel().getColumn(2).setMinWidth(0);
+        TBLCARRERA.getTableHeader().getColumnModel().getColumn(2).setMaxWidth(0);
+        TBLCARRERA.getTableHeader().getColumnModel().getColumn(2).setMaxWidth(0);
+        //Para ocultar un columna (ESTADO)
+        TBLCARRERA.getColumnModel().getColumn(3).setMaxWidth(0);
+        TBLCARRERA.getColumnModel().getColumn(3).setMinWidth(0);
+        TBLCARRERA.getTableHeader().getColumnModel().getColumn(3).setMaxWidth(0);
+        TBLCARRERA.getTableHeader().getColumnModel().getColumn(3).setMaxWidth(0);
+    }//GEN-LAST:event_guardar_btnActionPerformed
+
+    private void cancelar_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelar_btnActionPerformed
+        id_txt.setEnabled(false);
+        carrera_txt.setEnabled(false);
+        descripcion_txt.setEnabled(false);
+        estado_jcb.setEnabled(false);
+
+        nue_modi_btn.setEnabled(true);
+        nue_modi_btn.setText("NUEVO");
+        guardar_btn.setEnabled(false);
+        cancelar_btn.setEnabled(false);
+
+        id_txt.setText("");
+        carrera_txt.setText("");
+        descripcion_txt.setText("");
+        estado_jcb.setText("");
+    }//GEN-LAST:event_cancelar_btnActionPerformed
+
+    private void nue_modi_btnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nue_modi_btnMouseClicked
+        id_txt.setEnabled(false);
+        carrera_txt.setEnabled(true);
+        descripcion_txt.setEnabled(true);
+        estado_jcb.setEnabled(true);
+    }//GEN-LAST:event_nue_modi_btnMouseClicked
+
+    private void nue_modi_btnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nue_modi_btnActionPerformed
+        if (nue_modi_btn.getText().equalsIgnoreCase("MODIFICAR")) {
+            carrera_txt.setEnabled(true);
+            descripcion_txt.setEnabled(true);
+            estado_jcb.setEnabled(true);
+            nue_modi_btn.setEnabled(false);
+
+        } else if (nue_modi_btn.getText().equalsIgnoreCase("NUEVO")) {
+            carrera_txt.setEnabled(true);
+            descripcion_txt.setEnabled(true);
+            estado_jcb.setEnabled(true);
+            nue_modi_btn.setEnabled(false);
+
+            id_txt.setText("");
+            descripcion_txt.setText("");
+            estado_jcb.setText("");
+
+        }
+        cancelar_btn.setEnabled(true);
+        guardar_btn.setEnabled(true);
+    }//GEN-LAST:event_nue_modi_btnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable TBLCARRERA;
+    private javax.swing.JButton cancelar_btn;
+    private javax.swing.JTextField carrera_txt;
+    private javax.swing.JTextArea descripcion_txt;
+    private javax.swing.JCheckBox estado_jcb;
+    private javax.swing.JButton guardar_btn;
+    private javax.swing.JTextField id_txt;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JButton nue_modi_btn;
     // End of variables declaration//GEN-END:variables
 }

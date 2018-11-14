@@ -13,21 +13,26 @@ public class RolBE {
     private int idrol;
     private String nombrerol;
     private boolean estado;
+    private String descripcion;
 
     public RolBE() {
         this.IndOpSp = 0;
         this.idrol = 0;
         this.nombrerol = "";
         this.estado = false;
+        this.descripcion = "";
 
     }
 
-    public RolBE(int pIndOpSp, int pidrol, String pnombrerol, boolean pestado) {
-        this.IndOpSp = pIndOpSp;
-        this.idrol = pidrol;
-        this.nombrerol = pnombrerol;
-        this.estado = pestado;
+    public RolBE(int IndOpSp, int idrol, String nombrerol, boolean estado, String descripcion) {
+        this.IndOpSp = IndOpSp;
+        this.idrol = idrol;
+        this.nombrerol = nombrerol;
+        this.estado = estado;
+        this.descripcion = descripcion;
     }
+
+   
 
     public int getIndOpSp() {
         return IndOpSp;
@@ -43,7 +48,7 @@ public class RolBE {
 
     }
 
-    public boolean isEstado() {
+    public boolean getEstado() {
         return estado;
 
     }
@@ -65,6 +70,14 @@ public class RolBE {
     public void setEstado(boolean estado) {
 
         this.estado = estado;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
 }

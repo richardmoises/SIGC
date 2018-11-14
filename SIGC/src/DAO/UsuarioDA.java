@@ -599,5 +599,386 @@ public class UsuarioDA extends BaseDA {
 
         return oUsuarioBE;
     }
+    
+    public List<UsuarioBE> listarPersonas(String algo) {
 
+        // Arce y Zarate
+        // Arce y Zarate
+        // modificado po Zarate Y arce
+        ArrayList<UsuarioBE> listarPersona = new ArrayList<>();
+        UtilDAO oUtilDAO = new UtilDAO();
+
+        oUtilDAO.ejecutarQuery("select * from usuario where nombre like '%" + algo + "%'");
+
+        ResultSet resultados = oUtilDAO.ejecutarQuery("select * from usuario where nombre like '%" + algo + "%'");
+
+        try {
+            while (resultados.next()) {
+
+                UsuarioBE oUsuarioBE = new UsuarioBE();
+
+                int id = resultados.getInt("idusuario");
+                String usuario = resultados.getString("usuario");
+                String contrasenia = resultados.getString("contrasenia");
+                String nrodocumento = resultados.getString("nrodocumento");
+                String nombre = resultados.getString("nombre");
+                String appaterno = resultados.getString("appaterno");
+                String apmaterno = resultados.getString("apmaterno");
+                String telefonofijo = resultados.getString("telefonofijo");
+                String telefonomovil = resultados.getString("telefonomovil");
+                String direccion = resultados.getString("direccion");
+                String email = resultados.getString("email");
+                short idtiposexo = resultados.getShort("idtiposexo");
+                boolean estado = resultados.getBoolean("estado");
+                boolean inExist = resultados.getBoolean("inExist");
+                int idrol = resultados.getInt("idrol");
+                //Error al digitar la columna fecha_nacimiento
+                String fecha_nacimiento = resultados.getString("fecha_nacimiento");
+                String estado_civil = resultados.getString("estado_civil");
+                String cuenta_facebook = resultados.getString("cuenta_facebook");
+
+                oUsuarioBE.setIdusuario(id);
+                oUsuarioBE.setUsuario(usuario);
+                oUsuarioBE.setContrasenia(contrasenia);
+                oUsuarioBE.setNrodocumento(nrodocumento);
+                oUsuarioBE.setNombre(nombre);
+                oUsuarioBE.setAppaterno(appaterno);
+                oUsuarioBE.setApmaterno(apmaterno);
+                oUsuarioBE.setTelefonofijo(telefonofijo);
+                oUsuarioBE.setTelefonomovil(telefonomovil);
+                oUsuarioBE.setDireccion(direccion);
+                oUsuarioBE.setEmail(email);
+                oUsuarioBE.setIdtiposexo(idtiposexo);
+                oUsuarioBE.setEstado(estado);
+                oUsuarioBE.setInExist(inExist);
+                oUsuarioBE.setIdrol(idrol);
+                oUsuarioBE.setFecha_nacimiento(fecha_nacimiento);
+                oUsuarioBE.setEstado_civil(estado_civil);
+                oUsuarioBE.setCuenta_facebook(cuenta_facebook);
+
+                listarPersona.add(oUsuarioBE);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return listarPersona;
+
+    }
+
+    public List<UsuarioBE> findUsuarioByNombre(String nombre) {
+        
+        // roca
+        // Buscando a usuario por NOMBRE
+        int contador = 0;
+
+        List<UsuarioBE> listaUsuarios = new ArrayList<>();
+        
+        try {
+            String cad = "select * from usuario where usuario.nombre like '%"+nombre+"%';";
+
+            RolBL oRolBL = new RolBL();
+            ResultSet rs = oRolBL.listarRS(cad);
+            System.out.println(cad);
+
+            while (rs.next()) {
+
+                int idusuario = rs.getInt("idusuario");
+                String nombre1 = rs.getString("nombre");
+                String appaterno = rs.getString("appaterno");
+                String apmaterno = rs.getString("apmaterno");
+                String contrasenia = rs.getString("contrasenia");
+                String usuario = rs.getString("usuario");
+                String nrodocumento = rs.getString("nrodocumento");
+                String telefonofijo = rs.getString("telefonofijo");
+                String telefonomovil = rs.getString("telefonomovil");
+                String direccion = rs.getString("Direccion");
+                String email = rs.getString("Email");
+                int idtiposexo = rs.getInt("idtiposexo");
+                boolean estado = rs.getBoolean("estado");
+                boolean inExist = rs.getBoolean("inExist");
+                int idrol = rs.getInt("idrol");
+                String fecha_nacimiento = rs.getString("fecha_nacimiento");
+                String estado_civil = rs.getString("estado_civil");
+                String cuenta_facebook = rs.getString("cuenta_facebook");
+
+                UsuarioBE oUsuarioBE = new UsuarioBE();
+                
+                oUsuarioBE.setIdusuario(idusuario);
+                oUsuarioBE.setNombre(nombre1);
+                oUsuarioBE.setAppaterno(appaterno);
+                oUsuarioBE.setApmaterno(apmaterno);
+                oUsuarioBE.setContrasenia(contrasenia);
+                oUsuarioBE.setUsuario(usuario);
+                oUsuarioBE.setNrodocumento(nrodocumento);
+                oUsuarioBE.setTelefonofijo(telefonofijo);
+                oUsuarioBE.setTelefonomovil(telefonomovil);
+                oUsuarioBE.setDireccion(direccion);
+                oUsuarioBE.setEmail(email);
+                oUsuarioBE.setIdtiposexo(idtiposexo);
+                oUsuarioBE.setEstado(estado);
+                oUsuarioBE.setInExist(inExist);
+                oUsuarioBE.setIdrol(idrol);
+                oUsuarioBE.setFecha_nacimiento(fecha_nacimiento);
+                oUsuarioBE.setEstado_civil(estado_civil);
+                oUsuarioBE.setCuenta_facebook(cuenta_facebook);
+
+                listaUsuarios.add(oUsuarioBE);
+                
+                //al ingrsar el contador suma en uno 
+            }
+
+        } catch (Exception e) {
+            //sea el caso que haiga un error retornara nulo
+            System.out.println(e.getMessage());
+            listaUsuarios = null;
+        }
+        
+        return listaUsuarios;
+    
+    }
+
+    public List<UsuarioBE> findUsuarioByAppaterno(String Appaterno) {
+        int contador = 0;
+
+        List<UsuarioBE> listaUsuarios = new ArrayList<>();
+        
+        try {
+            String cad = "select * from usuario where usuario.appaterno like '%"+Appaterno+"%';";
+
+            RolBL oRolBL = new RolBL();
+            ResultSet rs = oRolBL.listarRS(cad);
+            System.out.println(cad);
+
+            while (rs.next()) {
+
+                int idusuario = rs.getInt("idusuario");
+                String nombre1 = rs.getString("nombre");
+                String appaterno1 = rs.getString("appaterno");
+                String apmaterno = rs.getString("apmaterno");
+                String contrasenia = rs.getString("contrasenia");
+                String usuario = rs.getString("usuario");
+                String nrodocumento = rs.getString("nrodocumento");
+                String telefonofijo = rs.getString("telefonofijo");
+                String telefonomovil = rs.getString("telefonomovil");
+                String direccion = rs.getString("Direccion");
+                String email = rs.getString("Email");
+                int idtiposexo = rs.getInt("idtiposexo");
+                boolean estado = rs.getBoolean("estado");
+                boolean inExist = rs.getBoolean("inExist");
+                int idrol = rs.getInt("idrol");
+                String fecha_nacimiento = rs.getString("fecha_nacimiento");
+                String estado_civil = rs.getString("estado_civil");
+                String cuenta_facebook = rs.getString("cuenta_facebook");
+
+                UsuarioBE oUsuarioBE = new UsuarioBE();
+                
+                oUsuarioBE.setIdusuario(idusuario);
+                oUsuarioBE.setNombre(nombre1);
+                oUsuarioBE.setAppaterno(appaterno1);
+                oUsuarioBE.setApmaterno(apmaterno);
+                oUsuarioBE.setContrasenia(contrasenia);
+                oUsuarioBE.setUsuario(usuario);
+                oUsuarioBE.setNrodocumento(nrodocumento);
+                oUsuarioBE.setTelefonofijo(telefonofijo);
+                oUsuarioBE.setTelefonomovil(telefonomovil);
+                oUsuarioBE.setDireccion(direccion);
+                oUsuarioBE.setEmail(email);
+                oUsuarioBE.setIdtiposexo(idtiposexo);
+                oUsuarioBE.setEstado(estado);
+                oUsuarioBE.setInExist(inExist);
+                oUsuarioBE.setIdrol(idrol);
+                oUsuarioBE.setFecha_nacimiento(fecha_nacimiento);
+                oUsuarioBE.setEstado_civil(estado_civil);
+                oUsuarioBE.setCuenta_facebook(cuenta_facebook);
+
+                listaUsuarios.add(oUsuarioBE);
+                
+                //al ingrsar el contador suma en uno 
+            }
+
+        } catch (Exception e) {
+            //sea el caso que haiga un error retornara nulo
+            System.out.println(e.getMessage());
+            listaUsuarios = null;
+        }
+        
+        return listaUsuarios;
+    }
+
+    public List<UsuarioBE> findUsuarioByNrodocumento(String nrodocumento) {
+        int contador = 0;
+
+        List<UsuarioBE> listaUsuarios = new ArrayList<>();
+        
+        try {
+            String cad = "select * from usuario where usuario.nrodocumento like '%"+nrodocumento+"%';";
+
+            RolBL oRolBL = new RolBL();
+            ResultSet rs = oRolBL.listarRS(cad);
+            System.out.println(cad);
+
+            while (rs.next()) {
+
+                int idusuario = rs.getInt("idusuario");
+                String nombre1 = rs.getString("nombre");
+                String appaterno = rs.getString("appaterno");
+                String apmaterno = rs.getString("apmaterno");
+                String contrasenia = rs.getString("contrasenia");
+                String usuario = rs.getString("usuario");
+                String nrodocumento1 = rs.getString("nrodocumento");
+                String telefonofijo = rs.getString("telefonofijo");
+                String telefonomovil = rs.getString("telefonomovil");
+                String direccion = rs.getString("Direccion");
+                String email = rs.getString("Email");
+                int idtiposexo = rs.getInt("idtiposexo");
+                boolean estado = rs.getBoolean("estado");
+                boolean inExist = rs.getBoolean("inExist");
+                int idrol = rs.getInt("idrol");
+                String fecha_nacimiento = rs.getString("fecha_nacimiento");
+                String estado_civil = rs.getString("estado_civil");
+                String cuenta_facebook = rs.getString("cuenta_facebook");
+
+                UsuarioBE oUsuarioBE = new UsuarioBE();
+                
+                oUsuarioBE.setIdusuario(idusuario);
+                oUsuarioBE.setNombre(nombre1);
+                oUsuarioBE.setAppaterno(appaterno);
+                oUsuarioBE.setApmaterno(apmaterno);
+                oUsuarioBE.setContrasenia(contrasenia);
+                oUsuarioBE.setUsuario(usuario);
+                oUsuarioBE.setNrodocumento(nrodocumento1);
+                oUsuarioBE.setTelefonofijo(telefonofijo);
+                oUsuarioBE.setTelefonomovil(telefonomovil);
+                oUsuarioBE.setDireccion(direccion);
+                oUsuarioBE.setEmail(email);
+                oUsuarioBE.setIdtiposexo(idtiposexo);
+                oUsuarioBE.setEstado(estado);
+                oUsuarioBE.setInExist(inExist);
+                oUsuarioBE.setIdrol(idrol);
+                oUsuarioBE.setFecha_nacimiento(fecha_nacimiento);
+                oUsuarioBE.setEstado_civil(estado_civil);
+                oUsuarioBE.setCuenta_facebook(cuenta_facebook);
+
+                listaUsuarios.add(oUsuarioBE);
+                
+                //al ingrsar el contador suma en uno 
+            }
+
+        } catch (Exception e) {
+            //sea el caso que haiga un error retornara nulo
+            System.out.println(e.getMessage());
+            listaUsuarios = null;
+        }
+        
+        return listaUsuarios;
+    }
+
+    public UsuarioBE findUsuarioByIdusuario(int idusuario) {
+       int contador = 0;
+ 
+        UsuarioBE oUsuarioBE = new UsuarioBE();
+        
+        try {
+            String cad = "select * from usuario where usuario.idusuario = "+idusuario+";";
+
+            RolBL oRolBL = new RolBL();
+            ResultSet rs = oRolBL.listarRS(cad);
+            System.out.println(cad);
+
+            while (rs.next()) {
+
+                int idusuario1 = rs.getInt("idusuario");
+                String nombre1 = rs.getString("nombre");
+                String appaterno = rs.getString("appaterno");
+                String apmaterno = rs.getString("apmaterno");
+                String contrasenia = rs.getString("contrasenia");
+                String usuario = rs.getString("usuario");
+                String nrodocumento1 = rs.getString("nrodocumento");
+                String telefonofijo = rs.getString("telefonofijo");
+                String telefonomovil = rs.getString("telefonomovil");
+                String direccion = rs.getString("Direccion");
+                String email = rs.getString("Email");
+                int idtiposexo = rs.getInt("idtiposexo");
+                boolean estado = rs.getBoolean("estado");
+                boolean inExist = rs.getBoolean("inExist");
+                int idrol = rs.getInt("idrol");
+                String fecha_nacimiento = rs.getString("fecha_nacimiento");
+                String estado_civil = rs.getString("estado_civil");
+                String cuenta_facebook = rs.getString("cuenta_facebook");
+
+                
+                
+                oUsuarioBE.setIdusuario(idusuario1);
+                oUsuarioBE.setNombre(nombre1);
+                oUsuarioBE.setAppaterno(appaterno);
+                oUsuarioBE.setApmaterno(apmaterno);
+                oUsuarioBE.setContrasenia(contrasenia);
+                oUsuarioBE.setUsuario(usuario);
+                oUsuarioBE.setNrodocumento(nrodocumento1);
+                oUsuarioBE.setTelefonofijo(telefonofijo);
+                oUsuarioBE.setTelefonomovil(telefonomovil);
+                oUsuarioBE.setDireccion(direccion);
+                oUsuarioBE.setEmail(email);
+                oUsuarioBE.setIdtiposexo(idtiposexo);
+                oUsuarioBE.setEstado(estado);
+                oUsuarioBE.setInExist(inExist);
+                oUsuarioBE.setIdrol(idrol);
+                oUsuarioBE.setFecha_nacimiento(fecha_nacimiento);
+                oUsuarioBE.setEstado_civil(estado_civil);
+                oUsuarioBE.setCuenta_facebook(cuenta_facebook);
+
+                //al ingrsar el contador suma en uno 
+            }
+
+        } catch (Exception e) {
+            //sea el caso que haiga un error retornara nulo
+            System.out.println(e.getMessage());
+            oUsuarioBE = null;
+        }
+        
+        return oUsuarioBE; 
+    }
+    
+    public UsuarioBE updateCuentaUser (UsuarioBE oUsuarioBE) {
+    
+     UtilDAO oUtilDAO = new UtilDAO();
+        try {
+            String cadquery = ("update usuario "
+                    + " set usuario = '" + oUsuarioBE.getUsuario() + "' "
+                    + " ,contrasenia = '" + oUsuarioBE.getContrasenia() + "' "
+                    + " ,estado = '" + oUsuarioBE.getEstado()+ "' "
+                   + " where idusuario = " + oUsuarioBE.getIdusuario() + ";");
+                   
+             
+            int cad = oUtilDAO.ejecutarUpdate(cadquery);
+
+            System.out.println("resultado" + cad);
+
+            oUsuarioBE.setIndOpSp(1);
+
+            //se realiza la comprobacion de la actualizacion.
+            if (cad == 1) {
+                oUsuarioBE.setIndOpSp(1);
+            } else {
+                oUsuarioBE.setIndOpSp(2);
+            }
+
+        } catch (Exception e) {
+            oUsuarioBE.setIndOpSp(2);
+        }
+
+        return oUsuarioBE;
+    }
+
+    //---------------------------------------------------------------
+
+    
+    
+    
+    
+    
+    
+    
+    
 }

@@ -208,12 +208,14 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="CHKESTADO" min="-2" max="-2" attributes="0"/>
                           <Component id="TXTID" alignment="0" min="-2" pref="72" max="-2" attributes="0"/>
-                          <Component id="TXTNACIMIENTO" alignment="0" min="-2" pref="138" max="-2" attributes="0"/>
                           <Component id="TXTNOMBRE" max="32767" attributes="0"/>
                           <Component id="TXTAPEPATERNO" alignment="0" max="32767" attributes="0"/>
                           <Component id="TXTAPEMATERNO" alignment="0" pref="165" max="32767" attributes="0"/>
+                          <Component id="TXTNACIMIENTO" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="210" max="32767" attributes="0"/>
+                      <EmptySpace pref="31" max="32767" attributes="0"/>
+                      <Component id="TXTNACIMIENTO1" min="-2" pref="138" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -241,16 +243,19 @@
                           <Component id="TXTAPEMATERNO" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="TXTNACIMIENTO" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TXTNACIMIENTO1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="TXTNACIMIENTO" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="CHKESTADO" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="23" max="32767" attributes="0"/>
+                      <EmptySpace pref="31" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -296,7 +301,9 @@
             </Component>
             <Component class="javax.swing.JTextField" name="TXTAPEMATERNO">
             </Component>
-            <Component class="javax.swing.JTextField" name="TXTNACIMIENTO">
+            <Component class="javax.swing.JTextField" name="TXTNACIMIENTO1">
+            </Component>
+            <Component class="com.toedter.calendar.JDateChooser" name="TXTNACIMIENTO">
             </Component>
           </SubComponents>
         </Container>

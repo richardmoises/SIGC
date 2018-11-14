@@ -170,9 +170,29 @@ public class UsuarioBL {
         return null;
     }
 
+    public UsuarioBE updateCuentaUser(UsuarioBE oUsuarioBE) {
+
+        UsuarioDA oUusuarioDA = new UsuarioDA();
+
+        String usuario, contrasenia, estado;
+
+        usuario = (oUsuarioBE.getUsuario());
+        contrasenia = (oUsuarioBE.getContrasenia());
+        estado = (oUsuarioBE.getEstado() + "");
+
+        if (usuario.equals("") || contrasenia.equals("")
+                || estado.equals("")) {
+
+            oUsuarioBE.setIndOpSp(3);
+            return oUsuarioBE;
+        } else {
+            UsuarioBE resultados = oUusuarioDA.updateUser(oUsuarioBE);
+            return resultados;
+        }
+    }
+
     public UsuarioBE updateUser(UsuarioBE oUsuarioBE) {
 
-        //curi y machaca
         UsuarioDA oUusuarioDA = new UsuarioDA();
         //extraer los compos para realizar las modificaciones 
         String nombre, apepaterno, apematerno, direccion, nrodocumento, telefonomovil;
@@ -200,7 +220,6 @@ public class UsuarioBL {
 
     public UsuarioBE addUser(UsuarioBE oUsuarioBE) {
 
-        //curi y  machaca
         UsuarioDA oUusuarioDA = new UsuarioDA();
         String nombre, apepaterno, apematerno, direccion, nrodocumento, telefonomovil;
 
@@ -224,5 +243,47 @@ public class UsuarioBL {
         }
 
     }
+    
+    public List<UsuarioBE> listarPersonas(String algo) {
+        // Medina Jayo y Roca
 
+        UsuarioDA oUsuarioDA = new UsuarioDA();
+        UsuarioBE oUsuarioBE = new UsuarioBE();
+        //se guarda la lista en oListaUsuarioBE
+        List<UsuarioBE> oListaUsuarioBE = oUsuarioDA.listarPersonas(algo);
+
+        //retornando la lista UsuarioBE
+        return oListaUsuarioBE;
+
+    }
+
+    public List<UsuarioBE> findUsuarioByNombre(String nombre) {
+        UsuarioDA oUsuarioDA = new UsuarioDA();
+        List<UsuarioBE> listaUsuarios = oUsuarioDA.findUsuarioByNombre(nombre);
+        return listaUsuarios;
+
+    }
+
+    public List<UsuarioBE> findUsuarioByAppaterno(String appaterno) {
+        UsuarioDA oUsuarioDA = new UsuarioDA();
+        List<UsuarioBE> listaUsuarios = oUsuarioDA.findUsuarioByAppaterno(appaterno);
+        return listaUsuarios;
+
+    }
+
+    public List<UsuarioBE> findUsuarioByNrodocumento(String nrodocumento) {
+        UsuarioDA oUsuarioDA = new UsuarioDA();
+        List<UsuarioBE> listaUsuarios = oUsuarioDA.findUsuarioByNrodocumento(nrodocumento);
+        return listaUsuarios;
+    }
+
+    public UsuarioBE findUsuarioByIdusuario(int idusuario) {
+       UsuarioDA oUsuarioDA = new UsuarioDA();
+       UsuarioBE oUsuarioBE = new UsuarioBE();
+
+        oUsuarioBE = oUsuarioDA.findUsuarioByIdusuario(idusuario);
+                
+        return oUsuarioBE;
+
+    }
 }
