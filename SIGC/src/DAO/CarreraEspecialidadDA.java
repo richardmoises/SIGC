@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class CarreraEspecialidadDA {
 
-        //se realiza la coneccion a la base de datos 
+     //se realiza la coneccion a la base de datos 
     UtilDAO utilDao = new UtilDAO();
 
     public List<CarreraEspecialidadBE> listarCarreras() {
@@ -51,7 +51,7 @@ public class CarreraEspecialidadDA {
             System.out.println(e.getMessage());
 
         }
-//retorna listarCarrera
+        //retorna listarCarrera
         return listarCarrera;
 
     }
