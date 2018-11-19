@@ -18,6 +18,8 @@ import java.util.List;
 public class CarreraEspecialidadDA {
 
      //se realiza la coneccion a la base de datos 
+    
+    
     UtilDAO utilDao = new UtilDAO();
 
     public List<CarreraEspecialidadBE> listarCarreras() {
